@@ -1,0 +1,3481 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.cursor/
+  rules/
+    tdd.mdc
+c2c-rules/
+  rules/
+    tdd.md
+  _root.md
+src/
+  __tests__/
+    application/
+      services/
+        AdvancedRootFileGeneratorService.test.ts
+        ClaudeMdService.test.ts
+        FileConverterService.metadata.test.ts
+        FileConverterService.test.ts
+        FileExplorerService.test.ts
+        MetadataParserService.test.ts
+        RootFileGeneratorService.test.ts
+    infrastructure/
+      utils/
+        FileSystemUtils.test.ts
+    integration/
+      cli.integration.test.ts
+  application/
+    services/
+      AdvancedRootFileGeneratorService.ts
+      ClaudeMdService.ts
+      FileConverterService.ts
+      FileExplorerService.ts
+      MetadataParserService.ts
+      RootFileGeneratorService.ts
+  domain/
+    models/
+      CursorRuleMetadata.ts
+      FileInfo.ts
+  infrastructure/
+    utils/
+      FileSystemUtils.ts
+  presentation/
+    cli.ts
+.gitignore
+.npmignore
+CLAUDE.md
+cursor-rule-parsing.md
+jest.config.js
+package.json
+README.md
+requirement.md
+tsconfig.json
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".cursor/rules/tdd.mdc">
+---
+description: TDD Process Guidelines
+globs:
+alwaysApply: true
+---
+
+# TDD Process Guidelines - Cursor Rules
+
+## ⚠️ MANDATORY: Follow these rules for EVERY implementation and modification
+
+**This document defines the REQUIRED process for all code changes. No exceptions without explicit team approval.**
+
+## Core Cycle: Red → Green → Refactor
+
+### 1. RED Phase
+
+- Write a failing test FIRST
+- Test the simplest scenario
+- Verify test fails for the right reason
+- One test at a time
+
+### 2. GREEN Phase
+
+- Write MINIMAL code to pass
+- "Fake it till you make it" is OK
+- No premature optimization
+- YAGNI principle
+
+### 3. REFACTOR Phase
+
+- Remove duplication
+- Improve naming
+- Simplify structure
+- Keep tests passing
+
+## Test Quality: FIRST Principles
+
+- **Fast**: Milliseconds, not seconds
+- **Independent**: No shared state
+- **Repeatable**: Same result every time
+- **Self-validating**: Pass/fail, no manual checks
+- **Timely**: Written just before code
+
+## Test Structure: AAA Pattern
+
+```
+// Arrange
+Set up test data and dependencies
+
+// Act
+Execute the function/method
+
+// Assert
+Verify expected outcome
+```
+
+## Implementation Flow
+
+1. **List scenarios** before coding
+2. **Pick one scenario** → Write test
+3. **Run test** → See it fail (Red)
+4. **Implement** → Make it pass (Green)
+5. **Refactor** → Clean up (Still Green)
+6. **Commit** → Small, frequent commits
+7. **Repeat** → Next scenario
+
+## Test Pyramid Strategy
+
+- **Unit Tests** (70%): Fast, isolated, numerous
+- **Integration Tests** (20%): Module boundaries
+- **Acceptance Tests** (10%): User scenarios
+
+## Outside-In vs Inside-Out
+
+- **Outside-In**: Start with user-facing test → Mock internals → Implement details
+- **Inside-Out**: Start with core logic → Build outward → Integrate components
+
+## Common Anti-patterns to Avoid
+
+- Testing implementation details
+- Fragile tests tied to internals
+- Missing assertions
+- Slow, environment-dependent tests
+- Ignored failing tests
+
+## When Tests Fail
+
+1. **Identify**: Regression, flaky test, or spec change?
+2. **Isolate**: Narrow down the cause
+3. **Fix**: Code bug or test bug
+4. **Learn**: Add missing test cases
+
+## Team Practices
+
+- CI/CD integration mandatory
+- No merge without tests
+- Test code = Production code quality
+- Pair programming for complex tests
+- Regular test refactoring
+
+## Pragmatic Exceptions
+
+- UI/Graphics: Manual + snapshot tests
+- Performance: Benchmark suites
+- Exploratory: Spike then test
+- Legacy: Test on change
+
+## Remember
+
+- Tests are living documentation
+- Test behavior, not implementation
+- Small steps, fast feedback
+- When in doubt, write a test
+</file>
+
+<file path="c2c-rules/rules/tdd.md">
+# TDD Process Guidelines - Cursor Rules
+
+## ⚠️ MANDATORY: Follow these rules for EVERY implementation and modification
+
+**This document defines the REQUIRED process for all code changes. No exceptions without explicit team approval.**
+
+## Core Cycle: Red → Green → Refactor
+
+### 1. RED Phase
+
+- Write a failing test FIRST
+- Test the simplest scenario
+- Verify test fails for the right reason
+- One test at a time
+
+### 2. GREEN Phase
+
+- Write MINIMAL code to pass
+- "Fake it till you make it" is OK
+- No premature optimization
+- YAGNI principle
+
+### 3. REFACTOR Phase
+
+- Remove duplication
+- Improve naming
+- Simplify structure
+- Keep tests passing
+
+## Test Quality: FIRST Principles
+
+- **Fast**: Milliseconds, not seconds
+- **Independent**: No shared state
+- **Repeatable**: Same result every time
+- **Self-validating**: Pass/fail, no manual checks
+- **Timely**: Written just before code
+
+## Test Structure: AAA Pattern
+
+```
+// Arrange
+Set up test data and dependencies
+
+// Act
+Execute the function/method
+
+// Assert
+Verify expected outcome
+```
+
+## Implementation Flow
+
+1. **List scenarios** before coding
+2. **Pick one scenario** → Write test
+3. **Run test** → See it fail (Red)
+4. **Implement** → Make it pass (Green)
+5. **Refactor** → Clean up (Still Green)
+6. **Commit** → Small, frequent commits
+7. **Repeat** → Next scenario
+
+## Test Pyramid Strategy
+
+- **Unit Tests** (70%): Fast, isolated, numerous
+- **Integration Tests** (20%): Module boundaries
+- **Acceptance Tests** (10%): User scenarios
+
+## Outside-In vs Inside-Out
+
+- **Outside-In**: Start with user-facing test → Mock internals → Implement details
+- **Inside-Out**: Start with core logic → Build outward → Integrate components
+
+## Common Anti-patterns to Avoid
+
+- Testing implementation details
+- Fragile tests tied to internals
+- Missing assertions
+- Slow, environment-dependent tests
+- Ignored failing tests
+
+## When Tests Fail
+
+1. **Identify**: Regression, flaky test, or spec change?
+2. **Isolate**: Narrow down the cause
+3. **Fix**: Code bug or test bug
+4. **Learn**: Add missing test cases
+
+## Team Practices
+
+- CI/CD integration mandatory
+- No merge without tests
+- Test code = Production code quality
+- Pair programming for complex tests
+- Regular test refactoring
+
+## Pragmatic Exceptions
+
+- UI/Graphics: Manual + snapshot tests
+- Performance: Benchmark suites
+- Exploratory: Spike then test
+- Legacy: Test on change
+
+## Remember
+
+- Tests are living documentation
+- Test behavior, not implementation
+- Small steps, fast feedback
+- When in doubt, write a test
+</file>
+
+<file path="src/__tests__/application/services/MetadataParserService.test.ts">
+import { MetadataParserService } from '../../../application/services/MetadataParserService.js';
+import { FileInfo } from '../../../domain/models/FileInfo.js';
+
+describe('MetadataParserService', () => {
+  let service: MetadataParserService;
+
+  beforeEach(() => {
+    service = new MetadataParserService();
+  });
+
+  describe('parseFiles', () => {
+    it('should parse metadata from cursor rule files', () => {
+      // Arrange
+      const files: FileInfo[] = [
+        {
+          originalPath: '/test/project/.cursor/rules.mdc',
+          relativePath: 'project/.cursor/rules.mdc',
+          fileName: 'rules',
+          content: `---
+description: Basic coding rules
+alwaysApply: false
+---
+
+# Basic Rules
+
+This is the content of the rules.`
+        }
+      ];
+
+      // Act
+      const result = service.parseFiles(files);
+
+      // Assert
+      expect(result).toHaveLength(1);
+      expect(result[0].metadata).toEqual({
+        description: 'Basic coding rules',
+        alwaysApply: false
+      });
+      expect(result[0].content).toBe('# Basic Rules\n\nThis is the content of the rules.');
+      expect(result[0].fileName).toBe('rules');
+    });
+
+    it('should parse files with globs metadata', () => {
+      // Arrange
+      const files: FileInfo[] = [
+        {
+          originalPath: '/test/.cursor/vue-rules.mdc',
+          relativePath: '.cursor/vue-rules.mdc',
+          fileName: 'vue-rules',
+          content: `---
+globs: "**/*.vue"
+---
+
+Vue specific rules`
+        }
+      ];
+
+      // Act
+      const result = service.parseFiles(files);
+
+      // Assert
+      expect(result[0].metadata).toEqual({
+        globs: '**/*.vue'
+      });
+      expect(result[0].content).toBe('Vue specific rules');
+    });
+
+    it('should handle files without metadata', () => {
+      // Arrange
+      const files: FileInfo[] = [
+        {
+          originalPath: '/test/.cursor/plain.mdc',
+          relativePath: '.cursor/plain.mdc',
+          fileName: 'plain',
+          content: 'Just plain content without metadata'
+        }
+      ];
+
+      // Act
+      const result = service.parseFiles(files);
+
+      // Assert
+      expect(result[0].metadata).toEqual({});
+      expect(result[0].content).toBe('Just plain content without metadata');
+    });
+
+    it('should parse alwaysApply true metadata', () => {
+      // Arrange
+      const files: FileInfo[] = [
+        {
+          originalPath: '/test/.cursor/global.mdc',
+          relativePath: '.cursor/global.mdc',
+          fileName: 'global',
+          content: `---
+alwaysApply: true
+---
+
+Global rules that always apply`
+        }
+      ];
+
+      // Act
+      const result = service.parseFiles(files);
+
+      // Assert
+      expect(result[0].metadata).toEqual({
+        alwaysApply: true
+      });
+    });
+
+    it('should handle malformed metadata gracefully', () => {
+      // Arrange
+      const files: FileInfo[] = [
+        {
+          originalPath: '/test/.cursor/malformed.mdc',
+          relativePath: '.cursor/malformed.mdc',
+          fileName: 'malformed',
+          content: `---
+description: Missing closing
+# Content starts here`
+        }
+      ];
+
+      // Act
+      const result = service.parseFiles(files);
+
+      // Assert
+      expect(result[0].metadata).toEqual({});
+      expect(result[0].content).toBe(`---
+description: Missing closing
+# Content starts here`);
+    });
+
+    it('should preserve all fields when parsing multiple files', () => {
+      // Arrange
+      const files: FileInfo[] = [
+        {
+          originalPath: '/test/p1/.cursor/r1.mdc',
+          relativePath: 'p1/.cursor/r1.mdc',
+          fileName: 'r1',
+          content: `---
+alwaysApply: true
+---
+Rule 1`
+        },
+        {
+          originalPath: '/test/p2/.cursor/r2.mdc',
+          relativePath: 'p2/.cursor/r2.mdc',
+          fileName: 'r2',
+          content: `---
+description: Rule 2 desc
+---
+Rule 2`
+        }
+      ];
+
+      // Act
+      const result = service.parseFiles(files);
+
+      // Assert
+      expect(result).toHaveLength(2);
+      expect(result[0].relativePath).toBe('p1/.cursor/r1.mdc');
+      expect(result[1].relativePath).toBe('p2/.cursor/r2.mdc');
+    });
+  });
+});
+</file>
+
+<file path="src/application/services/ClaudeMdService.ts">
+import path from 'path';
+import { promises as fs } from 'fs';
+
+export class ClaudeMdService {
+  async updateClaudeMdFile(directoryPath: string): Promise<void> {
+    const claudeMdPath = path.join(directoryPath, 'CLAUDE.md');
+    
+    let content = '';
+    
+    try {
+      const existingContent = await fs.readFile(claudeMdPath, 'utf-8');
+      content = existingContent;
+    } catch (error) {
+      // File doesn't exist, will create new one
+      content = '';
+    }
+    
+    // Remove existing c2c-rules sections
+    content = this.removeExistingC2cRulesSections(content);
+    
+    // Add new c2c-rules section
+    const newC2cRulesSection = this.buildC2cRulesSection();
+    content = this.appendC2cRulesSection(content, newC2cRulesSection);
+    
+    await fs.writeFile(claudeMdPath, content);
+    console.log(`✓ Updated ${path.relative(process.cwd(), claudeMdPath)}`);
+  }
+  
+  private removeExistingC2cRulesSections(content: string): string {
+    // Remove all c2c-rules sections using regex
+    const c2cRulesRegex = /<c2c-rules>[\s\S]*?<\/c2c-rules>/g;
+    return content.replace(c2cRulesRegex, '');
+  }
+  
+  private buildC2cRulesSection(): string {
+    return `<c2c-rules>
+- @c2c-rules/_root.md
+</c2c-rules>`;
+  }
+  
+  private appendC2cRulesSection(content: string, c2cRulesSection: string): string {
+    // Trim whitespace from content
+    const trimmedContent = content.trim();
+    
+    if (trimmedContent === '') {
+      return c2cRulesSection;
+    }
+    
+    return `${trimmedContent}
+
+${c2cRulesSection}`;
+  }
+}
+</file>
+
+<file path="src/application/services/MetadataParserService.ts">
+import { FileInfo } from '../../domain/models/FileInfo.js';
+import { ParsedCursorRule, CursorRuleMetadata } from '../../domain/models/CursorRuleMetadata.js';
+import * as yaml from 'js-yaml';
+
+export class MetadataParserService {
+  parseFiles(files: FileInfo[]): ParsedCursorRule[] {
+    return files.map(file => this.parseFile(file));
+  }
+
+  private parseFile(file: FileInfo): ParsedCursorRule {
+    const { metadata, content } = this.extractMetadata(file.content);
+    
+    return {
+      metadata,
+      content,
+      fileName: file.fileName,
+      relativePath: file.relativePath
+    };
+  }
+
+  private extractMetadata(fileContent: string): { metadata: CursorRuleMetadata; content: string } {
+    const metadataRegex = /^---\n([\s\S]*?)\n---\n/;
+    const match = fileContent.match(metadataRegex);
+
+    if (!match) {
+      return {
+        metadata: {},
+        content: fileContent
+      };
+    }
+
+    try {
+      const yamlContent = match[1];
+      const metadata = yaml.load(yamlContent) as CursorRuleMetadata || {};
+      const content = fileContent.slice(match[0].length).trim();
+
+      return { metadata, content };
+    } catch (error) {
+      // If YAML parsing fails, treat entire content as body
+      return {
+        metadata: {},
+        content: fileContent
+      };
+    }
+  }
+}
+</file>
+
+<file path="src/domain/models/CursorRuleMetadata.ts">
+export interface CursorRuleMetadata {
+  description?: string;
+  globs?: string;
+  alwaysApply?: boolean;
+}
+
+export interface ParsedCursorRule {
+  metadata: CursorRuleMetadata;
+  content: string;
+  fileName: string;
+  relativePath: string;
+}
+</file>
+
+<file path="src/domain/models/FileInfo.ts">
+export interface FileInfo {
+  originalPath: string;
+  relativePath: string;
+  fileName: string;
+  content: string;
+}
+
+export interface ConversionResult {
+  totalFiles: number;
+  processedFiles: FileInfo[];
+  outputPath: string;
+}
+</file>
+
+<file path="src/infrastructure/utils/FileSystemUtils.ts">
+import { promises as fs } from 'fs';
+import path from 'path';
+
+export class FileSystemUtils {
+  static async findDirectories(rootPath: string, targetDirName: string): Promise<string[]> {
+    const directories: string[] = [];
+
+    async function searchDir(dirPath: string): Promise<void> {
+      try {
+        const entries = await fs.readdir(dirPath, { withFileTypes: true });
+        
+        for (const entry of entries) {
+          if (entry.isDirectory()) {
+            const fullPath = path.join(dirPath, entry.name);
+            
+            if (entry.name === targetDirName) {
+              directories.push(fullPath);
+            }
+            
+            await searchDir(fullPath);
+          }
+        }
+      } catch (error) {
+        console.error(`Error reading directory ${dirPath}:`, error);
+      }
+    }
+
+    await searchDir(rootPath);
+    return directories;
+  }
+
+  static async findFilesInDirectory(dirPath: string, extension: string): Promise<string[]> {
+    const files: string[] = [];
+
+    async function searchFiles(currentPath: string): Promise<void> {
+      try {
+        const entries = await fs.readdir(currentPath, { withFileTypes: true });
+        
+        for (const entry of entries) {
+          const fullPath = path.join(currentPath, entry.name);
+          
+          if (entry.isDirectory()) {
+            await searchFiles(fullPath);
+          } else if (entry.isFile() && entry.name.endsWith(extension)) {
+            files.push(fullPath);
+          }
+        }
+      } catch (error) {
+        console.error(`Error reading files in ${currentPath}:`, error);
+      }
+    }
+
+    await searchFiles(dirPath);
+    return files;
+  }
+
+  static async readFileContent(filePath: string): Promise<string> {
+    return await fs.readFile(filePath, 'utf-8');
+  }
+
+  static async ensureDirectory(dirPath: string): Promise<void> {
+    await fs.mkdir(dirPath, { recursive: true });
+  }
+
+  static async writeFile(filePath: string, content: string): Promise<void> {
+    const dir = path.dirname(filePath);
+    await this.ensureDirectory(dir);
+    await fs.writeFile(filePath, content, 'utf-8');
+  }
+}
+</file>
+
+<file path="cursor-rule-parsing.md">
+## 형식
+
+cursor rule은 항상 아래와 같은 형식으로 시작한다.
+
+```
+---
+description:
+globs:
+alwaysApply: false
+---
+```
+
+위 metadata 내용을 별도로 기억하고, 본문만 markdown 파일 내에 포함해야한다.
+
+## 추가 규칙
+
+기억한 metadata 내용에 따라 다음과 같이 `_root.md` 파일에 참조를 생성한다.
+alwaysApply, description, globs중 하나만 해당할 수 있다. 각 rule은 하나의 참조만 가지며, 우선순위는 alwaysApply > description > globs 순이다.
+
+```
+always apply below rules
+- rule-name: @rule-markdown-path
+...
+
+apply below rules if requirement matches
+- rule-name
+    - description: rule-description
+    - path: rule-markdown-path
+...
+
+apply below rules if glob pattern matches with related files:
+- rule-name
+    - glob: rule-glob-pattern
+    - path: rule-markdown-path
+...
+
+
+
+
+```
+</file>
+
+<file path="jest.config.js">
+/** @type {import('jest').Config} */
+export default {
+  preset: 'ts-jest/presets/default-esm',
+  testEnvironment: 'node',
+  extensionsToTreatAsEsm: ['.ts'],
+  moduleNameMapper: {
+    '^(\\.{1,2}/.*)\\.js$': '$1',
+  },
+  transform: {
+    '^.+\\.ts$': [
+      'ts-jest',
+      {
+        useESM: true,
+      },
+    ],
+  },
+  testMatch: ['**/__tests__/**/*.test.ts'],
+  collectCoverageFrom: [
+    'src/**/*.ts',
+    '!src/**/*.d.ts',
+    '!src/**/index.ts'
+  ],
+};
+</file>
+
+<file path="requirement.md">
+# C2C (Cursor to Claude) Requirements
+
+## 프로젝트 개요
+Cursor IDE의 규칙 파일들을 Claude AI가 이해할 수 있는 마크다운 형식으로 변환하는 CLI 도구
+
+## 핵심 기능
+
+### 1. 파일 탐색 및 읽기
+- 현재 디렉토리부터 재귀적으로 `.cursor` 디렉토리 탐색
+- 각 `.cursor` 디렉토리와 그 하위 디렉토리 내의 모든 `*.mdc` 파일 검색 (중첩된 디렉토리 포함)
+- 발견된 모든 파일의 내용을 읽어 메모리에 로드
+- 처리된 파일의 경로와 총 개수를 콘솔에 출력
+
+### 2. 파일 변환 및 저장
+- 읽어온 `.mdc` 파일들을 `c2c-rules` 디렉토리에 구조화하여 저장
+- 원본 디렉토리 구조를 고려한 폴더 구조 생성
+- 각 파일은 `[원본파일명].md` 형식으로 저장
+- 모든 변환된 파일을 참조하는 `_root.md` 인덱스 파일 생성
+
+## 기술 스택
+- **패키지 매니저**: pnpm
+- **언어**: TypeScript
+- **CLI 프레임워크**: Commander.js
+- **아키텍처**: Layered Architecture
+
+## 아키텍처 설계
+
+### Layered Architecture 구조
+```
+src/
+├── presentation/     # CLI 인터페이스 계층
+│   └── cli.ts       # Commander.js CLI 진입점
+├── application/      # 비즈니스 로직 계층
+│   └── services/    # 핵심 서비스
+│       ├── FileExplorerService.ts
+│       ├── FileConverterService.ts
+│       └── RootFileGeneratorService.ts
+├── domain/          # 도메인 모델 계층
+│   └── models/      # 데이터 구조
+│       └── FileInfo.ts
+└── infrastructure/  # 인프라 계층
+    └── utils/       # 파일 시스템 유틸리티
+        └── FileSystemUtils.ts
+```
+
+## 실행 시나리오
+
+1. 사용자가 `npx @vooster/c2c` 명령 실행
+2. 현재 디렉토리부터 모든 `.cursor` 디렉토리 탐색
+3. 각 `.cursor` 디렉토리와 그 하위 디렉토리 내의 `*.mdc` 파일 발견 (재귀적 탐색)
+4. 발견된 파일들의 경로와 총 개수 출력
+5. `c2c-rules` 디렉토리 생성 (존재하지 않을 경우)
+6. 원본 구조를 반영한 하위 디렉토리 생성
+7. 각 `.mdc` 파일을 `.md` 확장자로 변환하여 저장
+8. 모든 변환된 파일 목록을 포함한 `_root.md` 생성
+
+## 출력 예시
+
+### 콘솔 출력
+```
+Scanning for .cursor directories...
+
+Found 5 .mdc files:
+- ./project1/.cursor/rules.mdc
+- ./project1/.cursor/components/ui-rules.mdc
+- ./project2/.cursor/config.mdc
+- ./project2/.cursor/modules/api/api-guidelines.mdc
+- ./project2/.cursor/guidelines.mdc
+
+Converting files to c2c-rules directory...
+✓ Created c2c-rules/project1/rules.md
+✓ Created c2c-rules/project1/components/ui-rules.md
+✓ Created c2c-rules/project2/config.md
+✓ Created c2c-rules/project2/modules/api/api-guidelines.md
+✓ Created c2c-rules/project2/guidelines.md
+✓ Generated c2c-rules/_root.md
+
+Conversion completed successfully!
+```
+
+### _root.md 구조
+```markdown
+# Cursor Rules Collection
+
+This file contains references to all converted cursor rules.
+
+## Files
+
+### project1
+- rules: @project1/rules.md
+- components/ui-rules: @project1/components/ui-rules
+
+### project2
+- config: @project2/config.md
+- modules/api/api-guidelines: @project2/modules/api/api-guidelines.md
+- guidelines: @project2/guidelines.md
+
+Total files: 5
+```
+
+## 개발 단계
+
+1. **프로젝트 초기화**
+   - pnpm 프로젝트 생성
+   - TypeScript 설정
+   - Commander.js 의존성 추가
+
+2. **기본 구조 구현**
+   - Layered Architecture 디렉토리 구조 생성
+   - 기본 타입 및 인터페이스 정의
+
+3. **핵심 기능 구현**
+   - 파일 탐색 서비스
+   - 파일 변환 서비스
+   - 루트 파일 생성 서비스
+
+4. **CLI 통합**
+   - Commander.js를 사용한 CLI 인터페이스
+   - 에러 처리 및 사용자 피드백
+
+5. **테스트 및 배포**
+   - 단위 테스트
+   - 통합 테스트
+   - npm 패키지 배포 설정
+</file>
+
+<file path="src/__tests__/application/services/ClaudeMdService.test.ts">
+import { ClaudeMdService } from '../../../application/services/ClaudeMdService.js';
+import { promises as fs } from 'fs';
+import path from 'path';
+import { tmpdir } from 'os';
+
+describe('ClaudeMdService', () => {
+  let testDir: string;
+  let service: ClaudeMdService;
+
+  beforeEach(async () => {
+    testDir = path.join(tmpdir(), `c2c-test-${Date.now()}-${Math.random().toString(36).slice(2, 11)}`);
+    await fs.mkdir(testDir, { recursive: true });
+    service = new ClaudeMdService();
+  });
+
+  afterEach(async () => {
+    await fs.rm(testDir, { recursive: true, force: true });
+  });
+
+  describe('updateClaudeMdFile', () => {
+    it('should create CLAUDE.md file if it does not exist', async () => {
+      // Act
+      await service.updateClaudeMdFile(testDir);
+
+      // Assert
+      const claudeMdPath = path.join(testDir, 'CLAUDE.md');
+      const exists = await fs.access(claudeMdPath).then(() => true).catch(() => false);
+      expect(exists).toBe(true);
+
+      const content = await fs.readFile(claudeMdPath, 'utf-8');
+      expect(content).toContain('<c2c-rules>');
+      expect(content).toContain('- @c2c-rules/_root.md');
+      expect(content).toContain('</c2c-rules>');
+    });
+
+    it('should add c2c-rules section to existing CLAUDE.md without c2c-rules section', async () => {
+      // Arrange
+      const claudeMdPath = path.join(testDir, 'CLAUDE.md');
+      const existingContent = `# CLAUDE.md
+
+This is an existing CLAUDE.md file.
+
+## Some section
+
+Some content here.`;
+
+      await fs.writeFile(claudeMdPath, existingContent);
+
+      // Act
+      await service.updateClaudeMdFile(testDir);
+
+      // Assert
+      const content = await fs.readFile(claudeMdPath, 'utf-8');
+      expect(content).toContain(existingContent);
+      expect(content).toContain('<c2c-rules>');
+      expect(content).toContain('- @c2c-rules/_root.md');
+      expect(content).toContain('</c2c-rules>');
+      expect(content.indexOf('<c2c-rules>')).toBeGreaterThan(content.indexOf('Some content here.'));
+    });
+
+    it('should replace existing c2c-rules section in CLAUDE.md', async () => {
+      // Arrange
+      const claudeMdPath = path.join(testDir, 'CLAUDE.md');
+      const existingContent = `# CLAUDE.md
+
+This is an existing CLAUDE.md file.
+
+<c2c-rules>
+- @old-rules/_root.md
+- @another-old-rule.md
+</c2c-rules>
+
+## Some section
+
+Some content here.`;
+
+      await fs.writeFile(claudeMdPath, existingContent);
+
+      // Act
+      await service.updateClaudeMdFile(testDir);
+
+      // Assert
+      const content = await fs.readFile(claudeMdPath, 'utf-8');
+      expect(content).toContain('This is an existing CLAUDE.md file.');
+      expect(content).toContain('Some content here.');
+      expect(content).toContain('<c2c-rules>');
+      expect(content).toContain('- @c2c-rules/_root.md');
+      expect(content).toContain('</c2c-rules>');
+      expect(content).not.toContain('old-rules');
+      expect(content).not.toContain('another-old-rule');
+    });
+
+    it('should handle multiple c2c-rules sections and replace all of them', async () => {
+      // Arrange
+      const claudeMdPath = path.join(testDir, 'CLAUDE.md');
+      const existingContent = `# CLAUDE.md
+
+<c2c-rules>
+- @first-old-rule.md
+</c2c-rules>
+
+Some content in between.
+
+<c2c-rules>
+- @second-old-rule.md
+</c2c-rules>
+
+End content.`;
+
+      await fs.writeFile(claudeMdPath, existingContent);
+
+      // Act
+      await service.updateClaudeMdFile(testDir);
+
+      // Assert
+      const content = await fs.readFile(claudeMdPath, 'utf-8');
+      expect(content).toContain('Some content in between.');
+      expect(content).toContain('End content.');
+      expect(content).toContain('<c2c-rules>');
+      expect(content).toContain('- @c2c-rules/_root.md');
+      expect(content).toContain('</c2c-rules>');
+      expect(content).not.toContain('first-old-rule');
+      expect(content).not.toContain('second-old-rule');
+      
+      // Should have only one c2c-rules section
+      const matches = content.match(/<c2c-rules>/g);
+      expect(matches).toHaveLength(1);
+    });
+
+    it('should handle c2c-rules section with different whitespace and formatting', async () => {
+      // Arrange
+      const claudeMdPath = path.join(testDir, 'CLAUDE.md');
+      const existingContent = `# CLAUDE.md
+
+Some content.
+
+<c2c-rules>
+
+
+- @old-rule.md
+  - @nested-rule.md
+
+
+</c2c-rules>
+
+More content.`;
+
+      await fs.writeFile(claudeMdPath, existingContent);
+
+      // Act
+      await service.updateClaudeMdFile(testDir);
+
+      // Assert
+      const content = await fs.readFile(claudeMdPath, 'utf-8');
+      expect(content).toContain('Some content.');
+      expect(content).toContain('More content.');
+      expect(content).toContain('<c2c-rules>');
+      expect(content).toContain('- @c2c-rules/_root.md');
+      expect(content).toContain('</c2c-rules>');
+      expect(content).not.toContain('old-rule');
+      expect(content).not.toContain('nested-rule');
+    });
+
+    it('should append c2c-rules section at the end of file', async () => {
+      // Arrange
+      const claudeMdPath = path.join(testDir, 'CLAUDE.md');
+      const existingContent = `# CLAUDE.md
+
+This is existing content.
+
+## Last section
+
+Last content.`;
+
+      await fs.writeFile(claudeMdPath, existingContent);
+
+      // Act
+      await service.updateClaudeMdFile(testDir);
+
+      // Assert
+      const content = await fs.readFile(claudeMdPath, 'utf-8');
+      expect(content.endsWith('</c2c-rules>')).toBe(true);
+      expect(content.indexOf('Last content.')).toBeLessThan(content.indexOf('<c2c-rules>'));
+    });
+
+    it('should handle empty CLAUDE.md file', async () => {
+      // Arrange
+      const claudeMdPath = path.join(testDir, 'CLAUDE.md');
+      await fs.writeFile(claudeMdPath, '');
+
+      // Act
+      await service.updateClaudeMdFile(testDir);
+
+      // Assert
+      const content = await fs.readFile(claudeMdPath, 'utf-8');
+      expect(content).toBe(`<c2c-rules>
+- @c2c-rules/_root.md
+</c2c-rules>`);
+    });
+
+    it('should handle CLAUDE.md file with only whitespace', async () => {
+      // Arrange
+      const claudeMdPath = path.join(testDir, 'CLAUDE.md');
+      await fs.writeFile(claudeMdPath, '   \n\n  \t  \n');
+
+      // Act
+      await service.updateClaudeMdFile(testDir);
+
+      // Assert
+      const content = await fs.readFile(claudeMdPath, 'utf-8');
+      expect(content).toBe(`<c2c-rules>
+- @c2c-rules/_root.md
+</c2c-rules>`);
+    });
+  });
+});
+</file>
+
+<file path="src/__tests__/application/services/FileConverterService.metadata.test.ts">
+import { FileConverterService } from '../../../application/services/FileConverterService.js';
+import { ParsedCursorRule } from '../../../domain/models/CursorRuleMetadata.js';
+import { promises as fs } from 'fs';
+import path from 'path';
+import { tmpdir } from 'os';
+
+describe('FileConverterService - Metadata handling', () => {
+  let testDir: string;
+  let service: FileConverterService;
+
+  beforeEach(async () => {
+    testDir = path.join(tmpdir(), `c2c-test-${Date.now()}-${Math.random().toString(36).slice(2, 11)}`);
+    await fs.mkdir(testDir, { recursive: true });
+    service = new FileConverterService();
+  });
+
+  afterEach(async () => {
+    await fs.rm(testDir, { recursive: true, force: true });
+  });
+
+  describe('convertParsedFiles', () => {
+    it('should convert files with metadata stripped', async () => {
+      // Arrange
+      const parsedRules: ParsedCursorRule[] = [
+        {
+          metadata: { alwaysApply: true },
+          content: '# Global Rules\n\nThis is the actual content.',
+          fileName: 'global',
+          relativePath: '.cursor/global.mdc'
+        },
+        {
+          metadata: { description: 'Test rule' },
+          content: '## Test Content\n\nNo metadata here.',
+          fileName: 'test',
+          relativePath: 'project/.cursor/test.mdc'
+        }
+      ];
+
+      // Act
+      const outputPaths = await service.convertParsedFiles(parsedRules, testDir);
+
+      // Assert
+      expect(outputPaths).toHaveLength(2);
+      
+      const content1 = await fs.readFile(outputPaths[0], 'utf-8');
+      const content2 = await fs.readFile(outputPaths[1], 'utf-8');
+      
+      expect(content1).toBe('# Global Rules\n\nThis is the actual content.');
+      expect(content2).toBe('## Test Content\n\nNo metadata here.');
+      
+      // Ensure metadata is not in the files
+      expect(content1).not.toContain('alwaysApply');
+      expect(content2).not.toContain('description');
+    });
+
+    it('should maintain correct file paths', async () => {
+      // Arrange
+      const parsedRules: ParsedCursorRule[] = [
+        {
+          metadata: { globs: '**/*.vue' },
+          content: 'Vue rules',
+          fileName: 'vue-rules',
+          relativePath: 'frontend/.cursor/components/vue-rules.mdc'
+        }
+      ];
+
+      // Act
+      const outputPaths = await service.convertParsedFiles(parsedRules, testDir);
+
+      // Assert
+      const expectedPath = path.join(testDir, 'c2c-rules', 'frontend', 'components', 'vue-rules.md');
+      expect(outputPaths[0]).toBe(expectedPath);
+    });
+  });
+});
+</file>
+
+<file path="src/__tests__/infrastructure/utils/FileSystemUtils.test.ts">
+import { FileSystemUtils } from '../../../infrastructure/utils/FileSystemUtils.js';
+import { promises as fs } from 'fs';
+import path from 'path';
+import { tmpdir } from 'os';
+
+describe('FileSystemUtils', () => {
+  let testDir: string;
+
+  beforeEach(async () => {
+    testDir = path.join(tmpdir(), `c2c-test-${Date.now()}-${Math.random().toString(36).slice(2, 11)}`);
+    await fs.mkdir(testDir, { recursive: true });
+  });
+
+  afterEach(async () => {
+    await fs.rm(testDir, { recursive: true, force: true });
+  });
+
+  describe('findDirectories', () => {
+    it('should find target directories recursively', async () => {
+      // Arrange
+      await fs.mkdir(path.join(testDir, 'project1', '.cursor'), { recursive: true });
+      await fs.mkdir(path.join(testDir, 'project2', 'sub', '.cursor'), { recursive: true });
+      await fs.mkdir(path.join(testDir, 'project3', '.not-cursor'), { recursive: true });
+
+      // Act
+      const result = await FileSystemUtils.findDirectories(testDir, '.cursor');
+
+      // Assert
+      expect(result).toHaveLength(2);
+      expect(result).toContain(path.join(testDir, 'project1', '.cursor'));
+      expect(result).toContain(path.join(testDir, 'project2', 'sub', '.cursor'));
+    });
+
+    it('should return empty array when no target directories found', async () => {
+      // Act
+      const result = await FileSystemUtils.findDirectories(testDir, '.cursor');
+
+      // Assert
+      expect(result).toEqual([]);
+    });
+  });
+
+  describe('findFilesInDirectory', () => {
+    it('should find files with specific extension recursively', async () => {
+      // Arrange
+      const cursorDir = path.join(testDir, '.cursor');
+      await fs.mkdir(path.join(cursorDir, 'sub'), { recursive: true });
+      await fs.writeFile(path.join(cursorDir, 'rules.mdc'), 'content1');
+      await fs.writeFile(path.join(cursorDir, 'sub', 'config.mdc'), 'content2');
+      await fs.writeFile(path.join(cursorDir, 'other.txt'), 'content3');
+
+      // Act
+      const result = await FileSystemUtils.findFilesInDirectory(cursorDir, '.mdc');
+
+      // Assert
+      expect(result).toHaveLength(2);
+      expect(result).toContain(path.join(cursorDir, 'rules.mdc'));
+      expect(result).toContain(path.join(cursorDir, 'sub', 'config.mdc'));
+    });
+
+    it('should return empty array when no files match extension', async () => {
+      // Arrange
+      const cursorDir = path.join(testDir, '.cursor');
+      await fs.mkdir(cursorDir, { recursive: true });
+      await fs.writeFile(path.join(cursorDir, 'file.txt'), 'content');
+
+      // Act
+      const result = await FileSystemUtils.findFilesInDirectory(cursorDir, '.mdc');
+
+      // Assert
+      expect(result).toEqual([]);
+    });
+  });
+
+  describe('readFileContent', () => {
+    it('should read file content as string', async () => {
+      // Arrange
+      const filePath = path.join(testDir, 'test.txt');
+      const expectedContent = 'Hello, World!';
+      await fs.writeFile(filePath, expectedContent);
+
+      // Act
+      const content = await FileSystemUtils.readFileContent(filePath);
+
+      // Assert
+      expect(content).toBe(expectedContent);
+    });
+  });
+
+  describe('ensureDirectory', () => {
+    it('should create directory if it does not exist', async () => {
+      // Arrange
+      const dirPath = path.join(testDir, 'new', 'nested', 'dir');
+
+      // Act
+      await FileSystemUtils.ensureDirectory(dirPath);
+
+      // Assert
+      const stats = await fs.stat(dirPath);
+      expect(stats.isDirectory()).toBe(true);
+    });
+
+    it('should not throw if directory already exists', async () => {
+      // Arrange
+      const dirPath = path.join(testDir, 'existing');
+      await fs.mkdir(dirPath);
+
+      // Act & Assert
+      await expect(FileSystemUtils.ensureDirectory(dirPath)).resolves.not.toThrow();
+    });
+  });
+
+  describe('writeFile', () => {
+    it('should write file and create parent directories', async () => {
+      // Arrange
+      const filePath = path.join(testDir, 'output', 'nested', 'file.txt');
+      const content = 'Test content';
+
+      // Act
+      await FileSystemUtils.writeFile(filePath, content);
+
+      // Assert
+      const readContent = await fs.readFile(filePath, 'utf-8');
+      expect(readContent).toBe(content);
+    });
+  });
+});
+</file>
+
+<file path="src/application/services/FileExplorerService.ts">
+import path from 'path';
+import { FileInfo } from '../../domain/models/FileInfo.js';
+import { FileSystemUtils } from '../../infrastructure/utils/FileSystemUtils.js';
+import { promises as fs } from 'fs';
+
+export class FileExplorerService {
+  async findMdcFiles(rootPath: string): Promise<FileInfo[]> {
+    console.log('Scanning for .cursor directories...\n');
+    
+    const cursorDirs = await FileSystemUtils.findDirectories(rootPath, '.cursor');
+    const fileInfos: FileInfo[] = [];
+
+    for (const cursorDir of cursorDirs) {
+      const mdcFiles = await FileSystemUtils.findFilesInDirectory(cursorDir, '.mdc');
+      
+      for (const filePath of mdcFiles) {
+        const content = await FileSystemUtils.readFileContent(filePath);
+        const relativePath = path.relative(rootPath, filePath);
+        const fileName = path.basename(filePath, '.mdc');
+        
+        fileInfos.push({
+          originalPath: filePath,
+          relativePath,
+          fileName,
+          content
+        });
+      }
+    }
+
+    console.log(`Found ${fileInfos.length} .mdc files:`);
+    fileInfos.forEach(file => {
+      console.log(`- ${file.relativePath}`);
+    });
+    console.log();
+
+    return fileInfos;
+  }
+
+  async findRootCursorDirectory(rootPath: string): Promise<string | null> {
+    const rootCursorPath = path.join(rootPath, '.cursor');
+    try {
+      const stats = await fs.stat(rootCursorPath);
+      if (stats.isDirectory()) {
+        return rootCursorPath;
+      }
+    } catch (error) {
+      // Directory doesn't exist
+    }
+    return null;
+  }
+
+  async findSubCursorDirectories(rootPath: string): Promise<string[]> {
+    const allCursorDirs = await FileSystemUtils.findDirectories(rootPath, '.cursor');
+    const rootCursorPath = path.join(rootPath, '.cursor');
+    const subCursorDirs: string[] = [];
+
+    for (const cursorDir of allCursorDirs) {
+      // Skip root .cursor directory
+      if (cursorDir === rootCursorPath) {
+        continue;
+      }
+
+      // Check if this .cursor directory has any .mdc files
+      const mdcFiles = await FileSystemUtils.findFilesInDirectory(cursorDir, '.mdc');
+      if (mdcFiles.length > 0) {
+        subCursorDirs.push(cursorDir);
+      }
+    }
+
+    return subCursorDirs;
+  }
+
+  async findMdcFilesInDirectory(cursorDir: string, rootPath: string): Promise<FileInfo[]> {
+    const fileInfos: FileInfo[] = [];
+    const mdcFiles = await FileSystemUtils.findFilesInDirectory(cursorDir, '.mdc');
+    
+    for (const filePath of mdcFiles) {
+      const content = await FileSystemUtils.readFileContent(filePath);
+      const relativePath = path.relative(rootPath, filePath);
+      const fileName = path.basename(filePath, '.mdc');
+      
+      fileInfos.push({
+        originalPath: filePath,
+        relativePath,
+        fileName,
+        content
+      });
+    }
+
+    return fileInfos;
+  }
+}
+</file>
+
+<file path="src/application/services/RootFileGeneratorService.ts">
+import path from "path";
+import { FileInfo } from "../../domain/models/FileInfo.js";
+import { FileSystemUtils } from "../../infrastructure/utils/FileSystemUtils.js";
+
+export class RootFileGeneratorService {
+  private readonly outputDir = "c2c-rules";
+
+  async generateRootFile(files: FileInfo[], rootPath: string): Promise<void> {
+    const rootFilePath = path.join(rootPath, this.outputDir, "_root.md");
+    const content = this.buildRootContent(files);
+
+    await FileSystemUtils.writeFile(rootFilePath, content);
+    console.log(`✓ Generated ${path.relative(rootPath, rootFilePath)}`);
+  }
+
+  private buildRootContent(files: FileInfo[]): string {
+    const filesByProject = this.groupFilesByProject(files);
+
+    let content = "# Rules Collection\n\n";
+    content +=
+      "This file contains references to all converted cursor rules.\n\n";
+    content += "## Files\n\n";
+
+    for (const [project, projectFiles] of Object.entries(filesByProject)) {
+      content += `### ${project || "root"}\n`;
+
+      for (const file of projectFiles) {
+        const displayPath = this.getDisplayPath(file.relativePath);
+        const linkPath = this.getLinkPath(file.relativePath);
+        content += `- ${displayPath}: @${linkPath}\n`;
+      }
+
+      content += "\n";
+    }
+
+    content += `Total files: ${files.length}`;
+
+    return content;
+  }
+
+  private groupFilesByProject(files: FileInfo[]): Record<string, FileInfo[]> {
+    const groups: Record<string, FileInfo[]> = {};
+
+    for (const file of files) {
+      const projectName = this.extractProjectName(file.relativePath);
+
+      if (!groups[projectName]) {
+        groups[projectName] = [];
+      }
+
+      groups[projectName].push(file);
+    }
+
+    return groups;
+  }
+
+  private extractProjectName(relativePath: string): string {
+    const parts = relativePath.split(path.sep);
+    const cursorIndex = parts.indexOf(".cursor");
+
+    if (cursorIndex > 0) {
+      return parts[cursorIndex - 1];
+    }
+
+    if (cursorIndex === 0) {
+      return "root";
+    }
+
+    return parts[0] || "root";
+  }
+
+  private getDisplayPath(relativePath: string): string {
+    const parts = relativePath.split(path.sep);
+    const cursorIndex = parts.indexOf(".cursor");
+
+    if (cursorIndex !== -1) {
+      const afterCursor = parts.slice(cursorIndex + 1);
+      const fileName = afterCursor.pop()?.replace(".mdc", "") || "";
+
+      if (afterCursor.length > 0) {
+        return `${afterCursor.join("/")}/${fileName}`;
+      }
+
+      return fileName;
+    }
+
+    return relativePath.replace(".mdc", "");
+  }
+
+  private getLinkPath(relativePath: string): string {
+    const parts = relativePath.split(path.sep);
+    const cursorIndex = parts.indexOf(".cursor");
+
+    if (cursorIndex !== -1) {
+      const projectParts = parts.slice(0, cursorIndex);
+      const afterCursor = parts.slice(cursorIndex + 1);
+      const combined = [...projectParts, ...afterCursor];
+
+      return combined.join("/").replace(".mdc", ".md");
+    }
+
+    return relativePath.replace(".mdc", ".md");
+  }
+}
+</file>
+
+<file path=".gitignore">
+node_modules
+dist/
+coverage/
+.DS_Store
+*.log
+.env
+.env.local
+.vscode/
+.idea/
+
+.claude
+</file>
+
+<file path=".npmignore">
+.cursor
+c2c-rules
+example
+src
+assets
+</file>
+
+<file path="tsconfig.json">
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2022"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "src/__tests__"]
+}
+</file>
+
+<file path="c2c-rules/_root.md">
+# Rules Collection
+
+you MUST read below files and STRICTLY FOLLOW as guidelines: 
+- tdd: @rules/tdd.md
+</file>
+
+<file path="src/__tests__/application/services/FileConverterService.test.ts">
+import { FileConverterService } from '../../../application/services/FileConverterService.js';
+import { FileInfo } from '../../../domain/models/FileInfo.js';
+import { promises as fs } from 'fs';
+import path from 'path';
+import { tmpdir } from 'os';
+
+describe('FileConverterService', () => {
+  let testDir: string;
+  let service: FileConverterService;
+
+  beforeEach(async () => {
+    testDir = path.join(tmpdir(), `c2c-test-${Date.now()}-${Math.random().toString(36).slice(2, 11)}`);
+    await fs.mkdir(testDir, { recursive: true });
+    service = new FileConverterService();
+  });
+
+  afterEach(async () => {
+    await fs.rm(testDir, { recursive: true, force: true });
+  });
+
+  describe('convertFiles', () => {
+    it('should convert files and maintain directory structure', async () => {
+      // Arrange
+      const files: FileInfo[] = [
+        {
+          originalPath: path.join(testDir, 'project1', '.cursor', 'rules.mdc'),
+          relativePath: path.join('project1', '.cursor', 'rules.mdc'),
+          fileName: 'rules',
+          content: 'Rule content'
+        },
+        {
+          originalPath: path.join(testDir, 'project2', '.cursor', 'sub', 'config.mdc'),
+          relativePath: path.join('project2', '.cursor', 'sub', 'config.mdc'),
+          fileName: 'config',
+          content: 'Config content'
+        }
+      ];
+
+      // Act
+      const outputPaths = await service.convertFiles(files, testDir);
+
+      // Assert
+      expect(outputPaths).toHaveLength(2);
+      
+      const expectedPath1 = path.join(testDir, 'c2c-rules', 'project1', 'rules.md');
+      const expectedPath2 = path.join(testDir, 'c2c-rules', 'project2', 'sub', 'config.md');
+      
+      expect(outputPaths[0]).toBe(expectedPath1);
+      expect(outputPaths[1]).toBe(expectedPath2);
+      
+      const content1 = await fs.readFile(expectedPath1, 'utf-8');
+      const content2 = await fs.readFile(expectedPath2, 'utf-8');
+      
+      expect(content1).toBe('Rule content');
+      expect(content2).toBe('Config content');
+    });
+
+    it('should handle files at root level .cursor directory', async () => {
+      // Arrange
+      const files: FileInfo[] = [
+        {
+          originalPath: path.join(testDir, '.cursor', 'global.mdc'),
+          relativePath: path.join('.cursor', 'global.mdc'),
+          fileName: 'global',
+          content: 'Global content'
+        }
+      ];
+
+      // Act
+      const outputPaths = await service.convertFiles(files, testDir);
+
+      // Assert
+      const expectedPath = path.join(testDir, 'c2c-rules', 'global.md');
+      expect(outputPaths[0]).toBe(expectedPath);
+      
+      const content = await fs.readFile(expectedPath, 'utf-8');
+      expect(content).toBe('Global content');
+    });
+
+    it('should handle deeply nested .cursor directories', async () => {
+      // Arrange
+      const files: FileInfo[] = [
+        {
+          originalPath: path.join(testDir, 'a', 'b', '.cursor', 'c', 'd', 'deep.mdc'),
+          relativePath: path.join('a', 'b', '.cursor', 'c', 'd', 'deep.mdc'),
+          fileName: 'deep',
+          content: 'Deep content'
+        }
+      ];
+
+      // Act
+      const outputPaths = await service.convertFiles(files, testDir);
+
+      // Assert
+      const expectedPath = path.join(testDir, 'c2c-rules', 'a', 'b', 'c', 'd', 'deep.md');
+      expect(outputPaths[0]).toBe(expectedPath);
+      
+      const content = await fs.readFile(expectedPath, 'utf-8');
+      expect(content).toBe('Deep content');
+    });
+
+    it('should create c2c-rules directory if it does not exist', async () => {
+      // Arrange
+      const files: FileInfo[] = [
+        {
+          originalPath: path.join(testDir, '.cursor', 'test.mdc'),
+          relativePath: path.join('.cursor', 'test.mdc'),
+          fileName: 'test',
+          content: 'Test'
+        }
+      ];
+
+      // Act
+      await service.convertFiles(files, testDir);
+
+      // Assert
+      const stats = await fs.stat(path.join(testDir, 'c2c-rules'));
+      expect(stats.isDirectory()).toBe(true);
+    });
+  });
+
+  describe('convertFilesWithSeparateDirectories', () => {
+    it('should convert root .cursor files to root c2c-rules directory', async () => {
+      // Arrange
+      const files: FileInfo[] = [
+        {
+          originalPath: path.join(testDir, '.cursor', 'root.mdc'),
+          relativePath: path.join('.cursor', 'root.mdc'),
+          fileName: 'root',
+          content: 'Root content'
+        }
+      ];
+
+      // Act
+      const outputPaths = await service.convertFilesWithSeparateDirectories(
+        files, 
+        testDir, 
+        path.join(testDir, '.cursor')
+      );
+
+      // Assert
+      const expectedPath = path.join(testDir, 'c2c-rules', 'root.md');
+      expect(outputPaths[0]).toBe(expectedPath);
+      
+      const content = await fs.readFile(expectedPath, 'utf-8');
+      expect(content).toBe('Root content');
+    });
+
+    it('should convert sub .cursor files to their respective c2c-rules directories', async () => {
+      // Arrange
+      const subDir = path.join(testDir, 'project1');
+      const files: FileInfo[] = [
+        {
+          originalPath: path.join(subDir, '.cursor', 'project.mdc'),
+          relativePath: path.join('project1', '.cursor', 'project.mdc'),
+          fileName: 'project',
+          content: 'Project content'
+        }
+      ];
+
+      // Act
+      const outputPaths = await service.convertFilesWithSeparateDirectories(
+        files,
+        testDir,
+        path.join(subDir, '.cursor')
+      );
+
+      // Assert
+      const expectedPath = path.join(subDir, 'c2c-rules', 'project.md');
+      expect(outputPaths[0]).toBe(expectedPath);
+      
+      const content = await fs.readFile(expectedPath, 'utf-8');
+      expect(content).toBe('Project content');
+    });
+
+    it('should handle nested .cursor directories with multiple levels', async () => {
+      // Arrange
+      const nestedDir = path.join(testDir, 'a', 'b', 'c');
+      const files: FileInfo[] = [
+        {
+          originalPath: path.join(nestedDir, '.cursor', 'sub', 'nested.mdc'),
+          relativePath: path.join('a', 'b', 'c', '.cursor', 'sub', 'nested.mdc'),
+          fileName: 'nested',
+          content: 'Nested content'
+        }
+      ];
+
+      // Act
+      const outputPaths = await service.convertFilesWithSeparateDirectories(
+        files,
+        testDir,
+        path.join(nestedDir, '.cursor')
+      );
+
+      // Assert
+      const expectedPath = path.join(nestedDir, 'c2c-rules', 'sub', 'nested.md');
+      expect(outputPaths[0]).toBe(expectedPath);
+      
+      const content = await fs.readFile(expectedPath, 'utf-8');
+      expect(content).toBe('Nested content');
+    });
+  });
+});
+</file>
+
+<file path="src/__tests__/application/services/FileExplorerService.test.ts">
+import { FileExplorerService } from '../../../application/services/FileExplorerService.js';
+import { promises as fs } from 'fs';
+import path from 'path';
+import { tmpdir } from 'os';
+
+describe('FileExplorerService', () => {
+  let testDir: string;
+  let service: FileExplorerService;
+
+  beforeEach(async () => {
+    testDir = path.join(tmpdir(), `c2c-test-${Date.now()}-${Math.random().toString(36).slice(2, 11)}`);
+    await fs.mkdir(testDir, { recursive: true });
+    service = new FileExplorerService();
+  });
+
+  afterEach(async () => {
+    await fs.rm(testDir, { recursive: true, force: true });
+  });
+
+  describe('findMdcFiles', () => {
+    it('should find mdc files in .cursor directories', async () => {
+      // Arrange
+      const cursorDir1 = path.join(testDir, 'project1', '.cursor');
+      const cursorDir2 = path.join(testDir, 'project2', '.cursor', 'sub');
+      
+      await fs.mkdir(cursorDir1, { recursive: true });
+      await fs.mkdir(cursorDir2, { recursive: true });
+      
+      await fs.writeFile(path.join(cursorDir1, 'rules.mdc'), 'Rule content');
+      await fs.writeFile(path.join(cursorDir2, 'config.mdc'), 'Config content');
+      await fs.writeFile(path.join(cursorDir1, 'readme.txt'), 'Should not be found');
+
+      // Act
+      const result = await service.findMdcFiles(testDir);
+
+      // Assert
+      expect(result).toHaveLength(2);
+      expect(result[0]).toMatchObject({
+        fileName: 'rules',
+        content: 'Rule content',
+        relativePath: path.join('project1', '.cursor', 'rules.mdc')
+      });
+      expect(result[1]).toMatchObject({
+        fileName: 'config',
+        content: 'Config content',
+        relativePath: path.join('project2', '.cursor', 'sub', 'config.mdc')
+      });
+    });
+
+    it('should return empty array when no .cursor directories exist', async () => {
+      // Act
+      const result = await service.findMdcFiles(testDir);
+
+      // Assert
+      expect(result).toEqual([]);
+    });
+
+    it('should return empty array when .cursor directories have no mdc files', async () => {
+      // Arrange
+      const cursorDir = path.join(testDir, '.cursor');
+      await fs.mkdir(cursorDir, { recursive: true });
+      await fs.writeFile(path.join(cursorDir, 'other.txt'), 'content');
+
+      // Act
+      const result = await service.findMdcFiles(testDir);
+
+      // Assert
+      expect(result).toEqual([]);
+    });
+
+    it('should handle nested .cursor directories correctly', async () => {
+      // Arrange
+      const deepCursorDir = path.join(testDir, 'a', 'b', 'c', '.cursor', 'd', 'e');
+      await fs.mkdir(deepCursorDir, { recursive: true });
+      await fs.writeFile(path.join(deepCursorDir, 'deep.mdc'), 'Deep content');
+
+      // Act
+      const result = await service.findMdcFiles(testDir);
+
+      // Assert
+      expect(result).toHaveLength(1);
+      expect(result[0]).toMatchObject({
+        fileName: 'deep',
+        content: 'Deep content',
+        relativePath: path.join('a', 'b', 'c', '.cursor', 'd', 'e', 'deep.mdc')
+      });
+    });
+  });
+
+  describe('findRootCursorDirectory', () => {
+    it('should find only root level .cursor directory', async () => {
+      // Arrange
+      const rootCursorDir = path.join(testDir, '.cursor');
+      const subCursorDir = path.join(testDir, 'project', '.cursor');
+      
+      await fs.mkdir(rootCursorDir, { recursive: true });
+      await fs.mkdir(subCursorDir, { recursive: true });
+      
+      await fs.writeFile(path.join(rootCursorDir, 'root.mdc'), 'Root content');
+      await fs.writeFile(path.join(subCursorDir, 'sub.mdc'), 'Sub content');
+
+      // Act
+      const result = await service.findRootCursorDirectory(testDir);
+
+      // Assert
+      expect(result).toBeDefined();
+      expect(result).toBe(rootCursorDir);
+    });
+
+    it('should return null when no root .cursor directory exists', async () => {
+      // Arrange
+      const subCursorDir = path.join(testDir, 'project', '.cursor');
+      await fs.mkdir(subCursorDir, { recursive: true });
+
+      // Act
+      const result = await service.findRootCursorDirectory(testDir);
+
+      // Assert
+      expect(result).toBeNull();
+    });
+  });
+
+  describe('findSubCursorDirectories', () => {
+    it('should find only subdirectory .cursor directories with .mdc files', async () => {
+      // Arrange
+      const rootCursorDir = path.join(testDir, '.cursor');
+      const subCursorDir1 = path.join(testDir, 'project1', '.cursor');
+      const subCursorDir2 = path.join(testDir, 'project2', '.cursor');
+      const subCursorDir3 = path.join(testDir, 'project3', '.cursor'); // No .mdc files
+      
+      await fs.mkdir(rootCursorDir, { recursive: true });
+      await fs.mkdir(subCursorDir1, { recursive: true });
+      await fs.mkdir(subCursorDir2, { recursive: true });
+      await fs.mkdir(subCursorDir3, { recursive: true });
+      
+      await fs.writeFile(path.join(rootCursorDir, 'root.mdc'), 'Root content');
+      await fs.writeFile(path.join(subCursorDir1, 'sub1.mdc'), 'Sub1 content');
+      await fs.writeFile(path.join(subCursorDir2, 'sub2.mdc'), 'Sub2 content');
+      await fs.writeFile(path.join(subCursorDir3, 'readme.txt'), 'Not mdc');
+
+      // Act
+      const result = await service.findSubCursorDirectories(testDir);
+
+      // Assert
+      expect(result).toHaveLength(2);
+      expect(result).toContain(subCursorDir1);
+      expect(result).toContain(subCursorDir2);
+      expect(result).not.toContain(rootCursorDir);
+      expect(result).not.toContain(subCursorDir3);
+    });
+
+    it('should find nested .cursor directories with .mdc files', async () => {
+      // Arrange
+      const nestedCursorDir = path.join(testDir, 'a', 'b', 'c', '.cursor');
+      await fs.mkdir(nestedCursorDir, { recursive: true });
+      await fs.writeFile(path.join(nestedCursorDir, 'nested.mdc'), 'Nested content');
+
+      // Act
+      const result = await service.findSubCursorDirectories(testDir);
+
+      // Assert
+      expect(result).toHaveLength(1);
+      expect(result[0]).toBe(nestedCursorDir);
+    });
+  });
+
+  describe('findMdcFilesInDirectory', () => {
+    it('should find mdc files in a specific cursor directory', async () => {
+      // Arrange
+      const cursorDir = path.join(testDir, 'project', '.cursor');
+      await fs.mkdir(cursorDir, { recursive: true });
+      await fs.writeFile(path.join(cursorDir, 'file1.mdc'), 'Content 1');
+      await fs.writeFile(path.join(cursorDir, 'file2.mdc'), 'Content 2');
+      await fs.writeFile(path.join(cursorDir, 'other.txt'), 'Not mdc');
+
+      // Act
+      const result = await service.findMdcFilesInDirectory(cursorDir, testDir);
+
+      // Assert
+      expect(result).toHaveLength(2);
+      expect(result[0]).toMatchObject({
+        fileName: 'file1',
+        content: 'Content 1',
+        relativePath: path.join('project', '.cursor', 'file1.mdc')
+      });
+      expect(result[1]).toMatchObject({
+        fileName: 'file2',
+        content: 'Content 2',
+        relativePath: path.join('project', '.cursor', 'file2.mdc')
+      });
+    });
+  });
+});
+</file>
+
+<file path="src/__tests__/application/services/RootFileGeneratorService.test.ts">
+import { RootFileGeneratorService } from "../../../application/services/RootFileGeneratorService.js";
+import { FileInfo } from "../../../domain/models/FileInfo.js";
+import { promises as fs } from "fs";
+import path from "path";
+import { tmpdir } from "os";
+
+describe("RootFileGeneratorService", () => {
+  let testDir: string;
+  let service: RootFileGeneratorService;
+
+  beforeEach(async () => {
+    testDir = path.join(tmpdir(), `c2c-test-${Date.now()}-${Math.random().toString(36).slice(2, 11)}`);
+    await fs.mkdir(testDir, { recursive: true });
+    service = new RootFileGeneratorService();
+  });
+
+  afterEach(async () => {
+    await fs.rm(testDir, { recursive: true, force: true });
+  });
+
+  describe("generateRootFile", () => {
+    it("should generate root file with correct structure", async () => {
+      // Arrange
+      const files: FileInfo[] = [
+        {
+          originalPath: path.join(testDir, "project1", ".cursor", "rules.mdc"),
+          relativePath: path.join("project1", ".cursor", "rules.mdc"),
+          fileName: "rules",
+          content: "Rule content",
+        },
+        {
+          originalPath: path.join(
+            testDir,
+            "project1",
+            ".cursor",
+            "components",
+            "ui-rules.mdc"
+          ),
+          relativePath: path.join(
+            "project1",
+            ".cursor",
+            "components",
+            "ui-rules.mdc"
+          ),
+          fileName: "ui-rules",
+          content: "UI Rules",
+        },
+        {
+          originalPath: path.join(testDir, "project2", ".cursor", "config.mdc"),
+          relativePath: path.join("project2", ".cursor", "config.mdc"),
+          fileName: "config",
+          content: "Config content",
+        },
+      ];
+
+      // Act
+      await service.generateRootFile(files, testDir);
+
+      // Assert
+      const rootPath = path.join(testDir, "c2c-rules", "_root.md");
+      const content = await fs.readFile(rootPath, "utf-8");
+
+      expect(content).toContain("# Rules Collection");
+      expect(content).toContain("## Files");
+      expect(content).toContain("### project1");
+      expect(content).toContain("- rules: @project1/rules.md");
+      expect(content).toContain(
+        "- components/ui-rules: @project1/components/ui-rules.md"
+      );
+      expect(content).toContain("### project2");
+      expect(content).toContain("- config: @project2/config.md");
+      expect(content).toContain("Total files: 3");
+    });
+
+    it("should handle files without project directory", async () => {
+      // Arrange
+      const files: FileInfo[] = [
+        {
+          originalPath: path.join(testDir, ".cursor", "global.mdc"),
+          relativePath: path.join(".cursor", "global.mdc"),
+          fileName: "global",
+          content: "Global content",
+        },
+      ];
+
+      // Act
+      await service.generateRootFile(files, testDir);
+
+      // Assert
+      const rootPath = path.join(testDir, "c2c-rules", "_root.md");
+      const content = await fs.readFile(rootPath, "utf-8");
+
+      expect(content).toContain("### root");
+      expect(content).toContain("- global: @global.md");
+    });
+
+    it("should handle deeply nested files correctly", async () => {
+      // Arrange
+      const files: FileInfo[] = [
+        {
+          originalPath: path.join(
+            testDir,
+            "deep",
+            "project",
+            ".cursor",
+            "sub1",
+            "sub2",
+            "nested.mdc"
+          ),
+          relativePath: path.join(
+            "deep",
+            "project",
+            ".cursor",
+            "sub1",
+            "sub2",
+            "nested.mdc"
+          ),
+          fileName: "nested",
+          content: "Nested content",
+        },
+      ];
+
+      // Act
+      await service.generateRootFile(files, testDir);
+
+      // Assert
+      const rootPath = path.join(testDir, "c2c-rules", "_root.md");
+      const content = await fs.readFile(rootPath, "utf-8");
+
+      expect(content).toContain("### project");
+      expect(content).toContain(
+        "- sub1/sub2/nested: @deep/project/sub1/sub2/nested.md"
+      );
+    });
+
+    it("should create c2c-rules directory if it does not exist", async () => {
+      // Arrange
+      const files: FileInfo[] = [
+        {
+          originalPath: path.join(testDir, ".cursor", "test.mdc"),
+          relativePath: path.join(".cursor", "test.mdc"),
+          fileName: "test",
+          content: "Test",
+        },
+      ];
+
+      // Act
+      await service.generateRootFile(files, testDir);
+
+      // Assert
+      const stats = await fs.stat(path.join(testDir, "c2c-rules"));
+      expect(stats.isDirectory()).toBe(true);
+    });
+  });
+});
+</file>
+
+<file path="src/__tests__/integration/cli.integration.test.ts">
+import { promises as fs } from 'fs';
+import path from 'path';
+import { tmpdir } from 'os';
+import { FileExplorerService } from '../../application/services/FileExplorerService.js';
+import { FileConverterService } from '../../application/services/FileConverterService.js';
+import { MetadataParserService } from '../../application/services/MetadataParserService.js';
+import { AdvancedRootFileGeneratorService } from '../../application/services/AdvancedRootFileGeneratorService.js';
+import { ClaudeMdService } from '../../application/services/ClaudeMdService.js';
+
+describe('CLI Integration Tests', () => {
+  let testDir: string;
+  let fileExplorer: FileExplorerService;
+  let metadataParser: MetadataParserService;
+  let fileConverter: FileConverterService;
+  let rootFileGenerator: AdvancedRootFileGeneratorService;
+  let claudeMdService: ClaudeMdService;
+
+  beforeEach(async () => {
+    testDir = path.join(tmpdir(), `c2c-integration-test-${Date.now()}-${Math.random().toString(36).slice(2, 11)}`);
+    await fs.mkdir(testDir, { recursive: true });
+    
+    fileExplorer = new FileExplorerService();
+    metadataParser = new MetadataParserService();
+    fileConverter = new FileConverterService();
+    rootFileGenerator = new AdvancedRootFileGeneratorService();
+    claudeMdService = new ClaudeMdService();
+  });
+
+  afterEach(async () => {
+    await fs.rm(testDir, { recursive: true, force: true });
+  });
+
+  it('should handle root .cursor directory only', async () => {
+    // Arrange
+    const rootCursorDir = path.join(testDir, '.cursor');
+    await fs.mkdir(rootCursorDir, { recursive: true });
+    await fs.writeFile(
+      path.join(rootCursorDir, 'global.mdc'),
+      '---\nalwaysApply: true\n---\nGlobal rules content'
+    );
+
+    // Act
+    const rootCursorDirFound = await fileExplorer.findRootCursorDirectory(testDir);
+    const subCursorDirs = await fileExplorer.findSubCursorDirectories(testDir);
+    
+    if (rootCursorDirFound) {
+      const rootFiles = await fileExplorer.findMdcFilesInDirectory(rootCursorDirFound, testDir);
+      const parsedRules = metadataParser.parseFiles(rootFiles);
+      await fileConverter.convertParsedFilesWithSeparateDirectories(parsedRules, testDir, rootCursorDirFound);
+      await rootFileGenerator.generateRootFileForDirectory(parsedRules, rootCursorDirFound, path.join(testDir, 'c2c-rules'));
+      await claudeMdService.updateClaudeMdFile(testDir);
+    }
+
+    // Assert
+    expect(rootCursorDirFound).toBe(rootCursorDir);
+    expect(subCursorDirs).toHaveLength(0);
+    
+    const outputFile = path.join(testDir, 'c2c-rules', 'global.md');
+    const rootFile = path.join(testDir, 'c2c-rules', '_root.md');
+    const claudeMdFile = path.join(testDir, 'CLAUDE.md');
+    
+    expect(await fs.readFile(outputFile, 'utf-8')).toBe('Global rules content');
+    expect(await fs.readFile(rootFile, 'utf-8')).toContain('@global.md');
+    expect(await fs.readFile(claudeMdFile, 'utf-8')).toContain('<c2c-rules>');
+    expect(await fs.readFile(claudeMdFile, 'utf-8')).toContain('- @c2c-rules/_root.md');
+    expect(await fs.readFile(claudeMdFile, 'utf-8')).toContain('</c2c-rules>');
+  });
+
+  it('should handle subdirectory .cursor directories only', async () => {
+    // Arrange
+    const project1CursorDir = path.join(testDir, 'project1', '.cursor');
+    const project2CursorDir = path.join(testDir, 'project2', '.cursor');
+    
+    await fs.mkdir(project1CursorDir, { recursive: true });
+    await fs.mkdir(project2CursorDir, { recursive: true });
+    
+    await fs.writeFile(
+      path.join(project1CursorDir, 'rules.mdc'),
+      '---\ndescription: "Project 1 rules"\n---\nProject 1 content'
+    );
+    await fs.writeFile(
+      path.join(project2CursorDir, 'config.mdc'),
+      '---\nglobs: "**/*.tsx"\n---\nProject 2 content'
+    );
+
+    // Act
+    const rootCursorDir = await fileExplorer.findRootCursorDirectory(testDir);
+    const subCursorDirs = await fileExplorer.findSubCursorDirectories(testDir);
+    
+    for (const cursorDir of subCursorDirs) {
+      const files = await fileExplorer.findMdcFilesInDirectory(cursorDir, testDir);
+      const parsedRules = metadataParser.parseFiles(files);
+      const cursorParentDir = path.dirname(cursorDir);
+      const outputDir = path.join(cursorParentDir, 'c2c-rules');
+      
+      await fileConverter.convertParsedFilesWithSeparateDirectories(parsedRules, testDir, cursorDir);
+      await rootFileGenerator.generateRootFileForDirectory(parsedRules, cursorDir, outputDir);
+      await claudeMdService.updateClaudeMdFile(cursorParentDir);
+    }
+
+    // Assert
+    expect(rootCursorDir).toBeNull();
+    expect(subCursorDirs).toHaveLength(2);
+    expect(subCursorDirs).toContain(project1CursorDir);
+    expect(subCursorDirs).toContain(project2CursorDir);
+    
+    const project1Output = path.join(testDir, 'project1', 'c2c-rules', 'rules.md');
+    const project1Root = path.join(testDir, 'project1', 'c2c-rules', '_root.md');
+    const project1ClaudeMd = path.join(testDir, 'project1', 'CLAUDE.md');
+    const project2Output = path.join(testDir, 'project2', 'c2c-rules', 'config.md');
+    const project2Root = path.join(testDir, 'project2', 'c2c-rules', '_root.md');
+    const project2ClaudeMd = path.join(testDir, 'project2', 'CLAUDE.md');
+    
+    expect(await fs.readFile(project1Output, 'utf-8')).toBe('Project 1 content');
+    expect(await fs.readFile(project1Root, 'utf-8')).toContain('Project 1 rules');
+    expect(await fs.readFile(project1ClaudeMd, 'utf-8')).toContain('- @c2c-rules/_root.md');
+    expect(await fs.readFile(project2Output, 'utf-8')).toBe('Project 2 content');
+    expect(await fs.readFile(project2Root, 'utf-8')).toContain('**/*.tsx');
+    expect(await fs.readFile(project2ClaudeMd, 'utf-8')).toContain('- @c2c-rules/_root.md');
+  });
+
+  it('should handle both root and subdirectory .cursor directories', async () => {
+    // Arrange
+    const rootCursorDir = path.join(testDir, '.cursor');
+    const projectCursorDir = path.join(testDir, 'project', '.cursor');
+    
+    await fs.mkdir(rootCursorDir, { recursive: true });
+    await fs.mkdir(projectCursorDir, { recursive: true });
+    
+    await fs.writeFile(
+      path.join(rootCursorDir, 'global.mdc'),
+      '---\nalwaysApply: true\n---\nGlobal content'
+    );
+    await fs.writeFile(
+      path.join(projectCursorDir, 'project.mdc'),
+      '---\ndescription: "Project specific"\n---\nProject content'
+    );
+
+    // Act
+    const rootCursorDirFound = await fileExplorer.findRootCursorDirectory(testDir);
+    const subCursorDirs = await fileExplorer.findSubCursorDirectories(testDir);
+    
+    // Process root
+    if (rootCursorDirFound) {
+      const rootFiles = await fileExplorer.findMdcFilesInDirectory(rootCursorDirFound, testDir);
+      const parsedRules = metadataParser.parseFiles(rootFiles);
+      await fileConverter.convertParsedFilesWithSeparateDirectories(parsedRules, testDir, rootCursorDirFound);
+      await rootFileGenerator.generateRootFileForDirectory(parsedRules, rootCursorDirFound, path.join(testDir, 'c2c-rules'));
+      await claudeMdService.updateClaudeMdFile(testDir);
+    }
+    
+    // Process subdirectories
+    for (const cursorDir of subCursorDirs) {
+      const files = await fileExplorer.findMdcFilesInDirectory(cursorDir, testDir);
+      const parsedRules = metadataParser.parseFiles(files);
+      const cursorParentDir = path.dirname(cursorDir);
+      const outputDir = path.join(cursorParentDir, 'c2c-rules');
+      
+      await fileConverter.convertParsedFilesWithSeparateDirectories(parsedRules, testDir, cursorDir);
+      await rootFileGenerator.generateRootFileForDirectory(parsedRules, cursorDir, outputDir);
+      await claudeMdService.updateClaudeMdFile(cursorParentDir);
+    }
+
+    // Assert
+    expect(rootCursorDirFound).toBe(rootCursorDir);
+    expect(subCursorDirs).toHaveLength(1);
+    expect(subCursorDirs[0]).toBe(projectCursorDir);
+    
+    // Check root output
+    const rootOutput = path.join(testDir, 'c2c-rules', 'global.md');
+    const rootIndexFile = path.join(testDir, 'c2c-rules', '_root.md');
+    const rootClaudeMd = path.join(testDir, 'CLAUDE.md');
+    
+    expect(await fs.readFile(rootOutput, 'utf-8')).toBe('Global content');
+    expect(await fs.readFile(rootIndexFile, 'utf-8')).toContain('@global.md');
+    expect(await fs.readFile(rootClaudeMd, 'utf-8')).toContain('- @c2c-rules/_root.md');
+    
+    // Check project output
+    const projectOutput = path.join(testDir, 'project', 'c2c-rules', 'project.md');
+    const projectIndexFile = path.join(testDir, 'project', 'c2c-rules', '_root.md');
+    const projectClaudeMd = path.join(testDir, 'project', 'CLAUDE.md');
+    
+    expect(await fs.readFile(projectOutput, 'utf-8')).toBe('Project content');
+    expect(await fs.readFile(projectIndexFile, 'utf-8')).toContain('Project specific');
+    expect(await fs.readFile(projectClaudeMd, 'utf-8')).toContain('- @c2c-rules/_root.md');
+  });
+
+  it('should handle nested subdirectory structures', async () => {
+    // Arrange
+    const nestedCursorDir = path.join(testDir, 'a', 'b', 'c', '.cursor');
+    const nestedSubDir = path.join(nestedCursorDir, 'sub');
+    await fs.mkdir(nestedSubDir, { recursive: true });
+    
+    await fs.writeFile(
+      path.join(nestedSubDir, 'nested.mdc'),
+      '---\nglobs: "**/*.vue"\n---\nNested content'
+    );
+
+    // Act
+    const rootCursorDir = await fileExplorer.findRootCursorDirectory(testDir);
+    const subCursorDirs = await fileExplorer.findSubCursorDirectories(testDir);
+    
+    for (const cursorDir of subCursorDirs) {
+      const files = await fileExplorer.findMdcFilesInDirectory(cursorDir, testDir);
+      const parsedRules = metadataParser.parseFiles(files);
+      const cursorParentDir = path.dirname(cursorDir);
+      const outputDir = path.join(cursorParentDir, 'c2c-rules');
+      
+      await fileConverter.convertParsedFilesWithSeparateDirectories(parsedRules, testDir, cursorDir);
+      await rootFileGenerator.generateRootFileForDirectory(parsedRules, cursorDir, outputDir);
+      await claudeMdService.updateClaudeMdFile(cursorParentDir);
+    }
+
+    // Assert
+    expect(rootCursorDir).toBeNull();
+    expect(subCursorDirs).toHaveLength(1);
+    expect(subCursorDirs[0]).toBe(nestedCursorDir);
+    
+    const nestedOutput = path.join(testDir, 'a', 'b', 'c', 'c2c-rules', 'sub', 'nested.md');
+    const nestedIndex = path.join(testDir, 'a', 'b', 'c', 'c2c-rules', '_root.md');
+    const nestedClaudeMd = path.join(testDir, 'a', 'b', 'c', 'CLAUDE.md');
+    
+    expect(await fs.readFile(nestedOutput, 'utf-8')).toBe('Nested content');
+    expect(await fs.readFile(nestedIndex, 'utf-8')).toContain('sub/nested.md');
+    expect(await fs.readFile(nestedClaudeMd, 'utf-8')).toContain('- @c2c-rules/_root.md');
+  });
+
+  it('should handle existing CLAUDE.md file with existing c2c-rules section', async () => {
+    // Arrange
+    const projectCursorDir = path.join(testDir, 'project', '.cursor');
+    await fs.mkdir(projectCursorDir, { recursive: true });
+    
+    await fs.writeFile(
+      path.join(projectCursorDir, 'project.mdc'),
+      '---\ndescription: "Project rules"\n---\nProject content'
+    );
+
+    // Create existing CLAUDE.md with old c2c-rules section
+    const existingClaudeMd = `# CLAUDE.md
+
+This is an existing CLAUDE.md file with project instructions.
+
+<c2c-rules>
+- @old-rules/_root.md
+- @another-old-rule.md
+</c2c-rules>
+
+## Additional sections
+
+More content here.`;
+
+    await fs.writeFile(path.join(testDir, 'project', 'CLAUDE.md'), existingClaudeMd);
+
+    // Act
+    const rootCursorDir = await fileExplorer.findRootCursorDirectory(testDir);
+    const subCursorDirs = await fileExplorer.findSubCursorDirectories(testDir);
+    
+    for (const cursorDir of subCursorDirs) {
+      const files = await fileExplorer.findMdcFilesInDirectory(cursorDir, testDir);
+      const parsedRules = metadataParser.parseFiles(files);
+      const cursorParentDir = path.dirname(cursorDir);
+      const outputDir = path.join(cursorParentDir, 'c2c-rules');
+      
+      await fileConverter.convertParsedFilesWithSeparateDirectories(parsedRules, testDir, cursorDir);
+      await rootFileGenerator.generateRootFileForDirectory(parsedRules, cursorDir, outputDir);
+      await claudeMdService.updateClaudeMdFile(cursorParentDir);
+    }
+
+    // Assert
+    expect(rootCursorDir).toBeNull();
+    expect(subCursorDirs).toHaveLength(1);
+    
+    const projectOutput = path.join(testDir, 'project', 'c2c-rules', 'project.md');
+    const projectIndexFile = path.join(testDir, 'project', 'c2c-rules', '_root.md');
+    const projectClaudeMd = path.join(testDir, 'project', 'CLAUDE.md');
+    
+    expect(await fs.readFile(projectOutput, 'utf-8')).toBe('Project content');
+    expect(await fs.readFile(projectIndexFile, 'utf-8')).toContain('Project rules');
+    
+    const claudeMdContent = await fs.readFile(projectClaudeMd, 'utf-8');
+    expect(claudeMdContent).toContain('This is an existing CLAUDE.md file with project instructions.');
+    expect(claudeMdContent).toContain('More content here.');
+    expect(claudeMdContent).toContain('- @c2c-rules/_root.md');
+    expect(claudeMdContent).not.toContain('old-rules');
+    expect(claudeMdContent).not.toContain('another-old-rule');
+    
+    // Should have only one c2c-rules section
+    const matches = claudeMdContent.match(/<c2c-rules>/g);
+    expect(matches).toHaveLength(1);
+  });
+});
+</file>
+
+<file path="src/application/services/FileConverterService.ts">
+import path from 'path';
+import { FileInfo } from '../../domain/models/FileInfo.js';
+import { ParsedCursorRule } from '../../domain/models/CursorRuleMetadata.js';
+import { FileSystemUtils } from '../../infrastructure/utils/FileSystemUtils.js';
+
+export class FileConverterService {
+  private readonly outputDir = 'c2c-rules';
+
+  async convertFiles(files: FileInfo[], rootPath: string): Promise<string[]> {
+    console.log('Converting files to c2c-rules directory...');
+    
+    const outputPaths: string[] = [];
+    const absoluteOutputDir = path.join(rootPath, this.outputDir);
+
+    for (const file of files) {
+      const outputPath = await this.convertFile(file, rootPath, absoluteOutputDir);
+      outputPaths.push(outputPath);
+      console.log(`✓ Created ${path.relative(rootPath, outputPath)}`);
+    }
+
+    return outputPaths;
+  }
+
+  async convertParsedFiles(parsedRules: ParsedCursorRule[], rootPath: string): Promise<string[]> {
+    console.log('Converting files to c2c-rules directory...');
+    
+    const outputPaths: string[] = [];
+    const absoluteOutputDir = path.join(rootPath, this.outputDir);
+
+    for (const rule of parsedRules) {
+      const outputPath = await this.convertParsedFile(rule, rootPath, absoluteOutputDir);
+      outputPaths.push(outputPath);
+      console.log(`✓ Created ${path.relative(rootPath, outputPath)}`);
+    }
+
+    return outputPaths;
+  }
+
+  private async convertFile(file: FileInfo, _rootPath: string, outputDir: string): Promise<string> {
+    const relativeDir = path.dirname(file.relativePath);
+    const projectPath = this.extractProjectPath(relativeDir);
+    
+    const outputDirPath = path.join(outputDir, projectPath);
+    const outputFileName = `${file.fileName}.md`;
+    const outputPath = path.join(outputDirPath, outputFileName);
+
+    await FileSystemUtils.writeFile(outputPath, file.content);
+    
+    return outputPath;
+  }
+
+  private async convertParsedFile(rule: ParsedCursorRule, _rootPath: string, outputDir: string): Promise<string> {
+    const relativeDir = path.dirname(rule.relativePath);
+    const projectPath = this.extractProjectPath(relativeDir);
+    
+    const outputDirPath = path.join(outputDir, projectPath);
+    const outputFileName = `${rule.fileName}.md`;
+    const outputPath = path.join(outputDirPath, outputFileName);
+
+    // Write only the content, not the metadata
+    await FileSystemUtils.writeFile(outputPath, rule.content);
+    
+    return outputPath;
+  }
+
+  private extractProjectPath(relativePath: string): string {
+    const parts = relativePath.split(path.sep);
+    const cursorIndex = parts.indexOf('.cursor');
+    
+    if (cursorIndex === -1) {
+      return relativePath;
+    }
+
+    const projectParts = parts.slice(0, cursorIndex);
+    const subParts = parts.slice(cursorIndex + 1);
+    
+    return [...projectParts, ...subParts].join(path.sep);
+  }
+
+  async convertFilesWithSeparateDirectories(
+    files: FileInfo[], 
+    rootPath: string, 
+    cursorDirPath: string
+  ): Promise<string[]> {
+    console.log('Converting files to c2c-rules directory...');
+    
+    const outputPaths: string[] = [];
+    
+    // Determine the output directory based on cursor directory location
+    const cursorParentDir = path.dirname(cursorDirPath);
+    const outputDir = path.join(cursorParentDir, this.outputDir);
+
+    for (const file of files) {
+      const outputPath = await this.convertFileToSpecificDir(file, cursorDirPath, outputDir);
+      outputPaths.push(outputPath);
+      console.log(`✓ Created ${path.relative(rootPath, outputPath)}`);
+    }
+
+    return outputPaths;
+  }
+
+  async convertParsedFilesWithSeparateDirectories(
+    parsedRules: ParsedCursorRule[], 
+    rootPath: string, 
+    cursorDirPath: string
+  ): Promise<string[]> {
+    console.log('Converting files to c2c-rules directory...');
+    
+    const outputPaths: string[] = [];
+    
+    // Determine the output directory based on cursor directory location
+    const cursorParentDir = path.dirname(cursorDirPath);
+    const outputDir = path.join(cursorParentDir, this.outputDir);
+
+    for (const rule of parsedRules) {
+      const outputPath = await this.convertParsedFileToSpecificDir(rule, cursorDirPath, outputDir);
+      outputPaths.push(outputPath);
+      console.log(`✓ Created ${path.relative(rootPath, outputPath)}`);
+    }
+
+    return outputPaths;
+  }
+
+  private async convertFileToSpecificDir(
+    file: FileInfo, 
+    cursorDirPath: string, 
+    outputDir: string
+  ): Promise<string> {
+    // Get the relative path from the cursor directory
+    const fileRelativeToCursor = path.relative(cursorDirPath, file.originalPath);
+    const outputPath = path.join(outputDir, fileRelativeToCursor.replace('.mdc', '.md'));
+
+    await FileSystemUtils.writeFile(outputPath, file.content);
+    
+    return outputPath;
+  }
+
+  private async convertParsedFileToSpecificDir(
+    rule: ParsedCursorRule, 
+    _cursorDirPath: string, 
+    outputDir: string
+  ): Promise<string> {
+    // Extract the path relative to the cursor directory from the rule's relativePath
+    const parts = rule.relativePath.split(path.sep);
+    const cursorIndex = parts.indexOf('.cursor');
+    
+    if (cursorIndex !== -1) {
+      // Get the part after .cursor
+      const afterCursor = parts.slice(cursorIndex + 1);
+      const relativePath = afterCursor.join(path.sep);
+      const outputPath = path.join(outputDir, relativePath.replace('.mdc', '.md'));
+      
+      await FileSystemUtils.writeFile(outputPath, rule.content);
+      return outputPath;
+    }
+    
+    // Fallback: use just the filename
+    const outputPath = path.join(outputDir, `${rule.fileName}.md`);
+    await FileSystemUtils.writeFile(outputPath, rule.content);
+    
+    return outputPath;
+  }
+}
+</file>
+
+<file path="CLAUDE.md">
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Development Commands
+
+```bash
+# Install dependencies
+pnpm install
+
+# Build the project
+pnpm build
+
+# Run in development mode
+pnpm dev
+
+# Run tests
+pnpm test
+
+# Run specific test file
+pnpm test src/__tests__/application/services/FileExplorerService.test.ts
+
+# Run tests in watch mode
+pnpm test:watch
+
+# Run tests with coverage
+pnpm test:coverage
+
+# Publish to npm
+pnpm publish:npm
+```
+
+## Architecture Overview
+
+This project converts Cursor IDE rule files (`.mdc`) to Claude AI-compatible markdown using a **Layered Architecture**:
+
+1. **Presentation Layer** (`src/presentation/`): CLI interface using Commander.js
+2. **Application Layer** (`src/application/services/`): Core business logic
+   - `FileExplorerService`: Recursively finds `.cursor` directories and `.mdc` files
+   - `MetadataParserService`: Extracts YAML frontmatter from `.mdc` files
+   - `FileConverterService`: Converts files and strips metadata, manages output directories
+   - `AdvancedRootFileGeneratorService`: Generates categorized `_root.md` index
+   - `ClaudeMdService`: Updates or creates CLAUDE.md files with `<c2c-rules>` sections
+3. **Domain Layer** (`src/domain/models/`): Type definitions for `FileInfo` and `CursorRuleMetadata`
+4. **Infrastructure Layer** (`src/infrastructure/utils/`): File system operations
+
+## Key Implementation Details
+
+### Metadata Format
+`.mdc` files contain YAML frontmatter:
+```yaml
+---
+alwaysApply: true      # Rule always applies
+description: string    # Rule description for matching
+globs: string         # Glob pattern for file matching
+---
+```
+
+### Rule Categorization Priority
+Rules are categorized by priority: `alwaysApply` > `description` > `globs`
+
+### Output Structure
+- Creates `c2c-rules/` directories next to each `.cursor` directory
+- Preserves original directory structure
+- Generates `_root.md` with categorized references using relative paths
+- Updates or creates `CLAUDE.md` files with `<c2c-rules>` sections
+
+### Testing Strategy
+- TDD approach with Jest
+- Test files mirror source structure in `__tests__/`
+- Use temporary directories with unique names to avoid race conditions
+- Clean up test artifacts in `afterEach` hooks
+- All 58 tests pass reliably without flaky failures
+
+## Important Patterns
+
+1. **Service Dependencies**: Services are instantiated in CLI and passed data, not injected
+2. **Path Handling**: Use `path.sep` for cross-platform compatibility
+3. **Async Operations**: All file operations use `promises` API from `fs`
+4. **Error Handling**: Graceful fallback when metadata parsing fails
+5. **Console Output**: Services log progress directly to console
+
+## Testing Individual Components
+
+```bash
+# Test a specific service
+pnpm test MetadataParserService
+
+# Test with pattern matching
+pnpm test --testNamePattern="should parse metadata"
+```
+
+## Domain Knowledge
+
+The tool bridges Cursor IDE's rule system with Claude AI's context understanding. Key transformations:
+1. Extracts metadata to categorize rules by priority (alwaysApply → description → globs)
+2. Strips metadata from content for clean markdown output
+3. Generates structured index for Claude to understand rule applicability
+4. Creates separate `c2c-rules` directories for each `.cursor` directory
+5. Automatically maintains `CLAUDE.md` files with proper rule references
+
+## Recent Updates
+
+- Fixed race condition in test suite by adding unique suffixes to temporary directories
+- All tests now pass reliably (58 tests, 9 test suites)
+- Updated to use `slice()` instead of deprecated `substr()` method
+- Improved test isolation to prevent ENOENT errors during parallel test execution
+
+## TDD Requirements
+
+@claude-rules/tdd.md
+
+<c2c-rules>
+- @c2c-rules/_root.md
+</c2c-rules>
+</file>
+
+<file path="src/application/services/AdvancedRootFileGeneratorService.ts">
+import path from "path";
+import { ParsedCursorRule } from "../../domain/models/CursorRuleMetadata.js";
+import { FileSystemUtils } from "../../infrastructure/utils/FileSystemUtils.js";
+
+export class AdvancedRootFileGeneratorService {
+  private readonly outputDir = "c2c-rules";
+
+  async generateRootFile(
+    rules: ParsedCursorRule[],
+    rootPath: string
+  ): Promise<void> {
+    const rootFilePath = path.join(rootPath, this.outputDir, "_root.md");
+    const content = this.buildAdvancedRootContent(rules);
+
+    await FileSystemUtils.writeFile(rootFilePath, content);
+    console.log(`✓ Generated ${path.relative(rootPath, rootFilePath)}`);
+  }
+
+  async generateRootFileForDirectory(
+    rules: ParsedCursorRule[],
+    cursorDir: string,
+    outputDir: string
+  ): Promise<void> {
+    const rootFilePath = path.join(outputDir, "_root.md");
+    const content = this.buildRootContentForDirectory(rules, cursorDir);
+
+    await FileSystemUtils.writeFile(rootFilePath, content);
+    console.log(`✓ Generated ${rootFilePath}`);
+  }
+
+  private buildAdvancedRootContent(rules: ParsedCursorRule[]): string {
+    const alwaysApplyRules = rules.filter(
+      (r) => r.metadata.alwaysApply === true
+    );
+    const descriptionRules = rules.filter(
+      (r) => r.metadata.alwaysApply !== true && r.metadata.description
+    );
+    const globRules = rules.filter(
+      (r) =>
+        r.metadata.alwaysApply !== true &&
+        !r.metadata.description &&
+        r.metadata.globs
+    );
+
+    let content = "# Rules Collection\n\n";
+
+    // Always Apply section
+    if (alwaysApplyRules.length > 0) {
+      content +=
+        "you MUST read below files and STRICTLY FOLLOW as guidelines: \n";
+      alwaysApplyRules.forEach((rule) => {
+        const linkPath = this.getLinkPath(rule.relativePath);
+        content += `- ${rule.fileName}: @${linkPath}\n`;
+      });
+      content += "\n";
+    }
+
+    // Description section
+    if (descriptionRules.length > 0) {
+      content +=
+        "read below rules if description matches with your requirement:\n";
+      descriptionRules.forEach((rule) => {
+        const linkPath = this.getLinkPath(rule.relativePath);
+        content += `- ${rule.fileName}\n`;
+        content += `    - description: ${rule.metadata.description}\n`;
+        content += `    - path: ${linkPath}\n`;
+      });
+      content += "\n";
+    }
+
+    // Glob section
+    if (globRules.length > 0) {
+      content +=
+        "read below rules if glob pattern matches with requirement related files:\n";
+      globRules.forEach((rule) => {
+        const linkPath = this.getLinkPath(rule.relativePath);
+        const globPattern = rule.metadata.globs!;
+        content += `- ${rule.fileName}\n`;
+        content += `    - glob: ${globPattern}\n`;
+        content += `    - path: ${linkPath}\n`;
+      });
+      content += "\n";
+    }
+
+    return content.trim();
+  }
+
+  private getLinkPath(relativePath: string): string {
+    const parts = relativePath.split(path.sep);
+    const cursorIndex = parts.indexOf(".cursor");
+
+    if (cursorIndex !== -1) {
+      const projectParts = parts.slice(0, cursorIndex);
+      const afterCursor = parts.slice(cursorIndex + 1);
+      const combined = [...projectParts, ...afterCursor];
+
+      return combined.join("/").replace(".mdc", ".md");
+    }
+
+    return relativePath.replace(".mdc", ".md");
+  }
+
+  private buildRootContentForDirectory(
+    rules: ParsedCursorRule[],
+    cursorDir: string
+  ): string {
+    const alwaysApplyRules = rules.filter(
+      (r) => r.metadata.alwaysApply === true
+    );
+    const descriptionRules = rules.filter(
+      (r) => r.metadata.alwaysApply !== true && r.metadata.description
+    );
+    const globRules = rules.filter(
+      (r) =>
+        r.metadata.alwaysApply !== true &&
+        !r.metadata.description &&
+        r.metadata.globs
+    );
+
+    let content = "# Rules Collection\n\n";
+
+    // Always Apply section
+    if (alwaysApplyRules.length > 0) {
+      content +=
+        "you MUST read below files and STRICTLY FOLLOW as guidelines: \n";
+      alwaysApplyRules.forEach((rule) => {
+        const linkPath = this.getLinkPathForDirectory(rule.relativePath, cursorDir);
+        content += `- ${rule.fileName}: @${linkPath}\n`;
+      });
+      content += "\n";
+    }
+
+    // Description section
+    if (descriptionRules.length > 0) {
+      content +=
+        "read below rules if description matches with your requirement:\n";
+      descriptionRules.forEach((rule) => {
+        const linkPath = this.getLinkPathForDirectory(rule.relativePath, cursorDir);
+        content += `- ${rule.fileName}\n`;
+        content += `    - description: ${rule.metadata.description}\n`;
+        content += `    - path: ${linkPath}\n`;
+      });
+      content += "\n";
+    }
+
+    // Glob section
+    if (globRules.length > 0) {
+      content +=
+        "read below rules if glob pattern matches with requirement related files:\n";
+      globRules.forEach((rule) => {
+        const linkPath = this.getLinkPathForDirectory(rule.relativePath, cursorDir);
+        const globPattern = rule.metadata.globs!;
+        content += `- ${rule.fileName}\n`;
+        content += `    - glob: ${globPattern}\n`;
+        content += `    - path: ${linkPath}\n`;
+      });
+      content += "\n";
+    }
+
+    return content.trim();
+  }
+
+  private getLinkPathForDirectory(relativePath: string, _cursorDir: string): string {
+    // Extract the part after .cursor in the original path
+    const parts = relativePath.split(path.sep);
+    const cursorIndex = parts.indexOf(".cursor");
+    
+    if (cursorIndex !== -1) {
+      const afterCursor = parts.slice(cursorIndex + 1);
+      return afterCursor.join("/").replace(".mdc", ".md");
+    }
+    
+    // Fallback: use the filename if no .cursor found
+    return path.basename(relativePath).replace(".mdc", ".md");
+  }
+}
+</file>
+
+<file path="src/presentation/cli.ts">
+#!/usr/bin/env node
+
+import { Command } from 'commander';
+import { FileExplorerService } from '../application/services/FileExplorerService.js';
+import { FileConverterService } from '../application/services/FileConverterService.js';
+import { MetadataParserService } from '../application/services/MetadataParserService.js';
+import { AdvancedRootFileGeneratorService } from '../application/services/AdvancedRootFileGeneratorService.js';
+import { ClaudeMdService } from '../application/services/ClaudeMdService.js';
+import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const packageJsonPath = join(__dirname, '../../package.json');
+const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf-8'));
+
+const program = new Command();
+
+program
+  .name('c2c')
+  .description('Convert Cursor IDE rules to Claude AI markdown format')
+  .version(packageJson.version)
+  .action(async () => {
+    try {
+      const rootPath = process.cwd();
+      
+      // Initialize services
+      const fileExplorer = new FileExplorerService();
+      const metadataParser = new MetadataParserService();
+      const fileConverter = new FileConverterService();
+      const rootFileGenerator = new AdvancedRootFileGeneratorService();
+      const claudeMdService = new ClaudeMdService();
+      
+      // Find root .cursor directory
+      const rootCursorDir = await fileExplorer.findRootCursorDirectory(rootPath);
+      
+      // Find subdirectory .cursor directories with .mdc files
+      const subCursorDirs = await fileExplorer.findSubCursorDirectories(rootPath);
+      
+      if (!rootCursorDir && subCursorDirs.length === 0) {
+        console.log('No .cursor directories with .mdc files found.');
+        return;
+      }
+      
+      // Process root .cursor directory if it exists
+      if (rootCursorDir) {
+        console.log('Processing root .cursor directory...');
+        const rootFiles = await fileExplorer.findMdcFilesInDirectory(rootCursorDir, rootPath);
+        
+        if (rootFiles.length > 0) {
+          const parsedRules = metadataParser.parseFiles(rootFiles);
+          await fileConverter.convertParsedFilesWithSeparateDirectories(parsedRules, rootPath, rootCursorDir);
+          await rootFileGenerator.generateRootFileForDirectory(parsedRules, rootCursorDir, join(rootPath, 'c2c-rules'));
+          await claudeMdService.updateClaudeMdFile(rootPath);
+        }
+      }
+      
+      // Process each subdirectory .cursor directory
+      for (const cursorDir of subCursorDirs) {
+        console.log(`Processing ${cursorDir}...`);
+        const files = await fileExplorer.findMdcFilesInDirectory(cursorDir, rootPath);
+        
+        if (files.length > 0) {
+          const parsedRules = metadataParser.parseFiles(files);
+          const cursorParentDir = dirname(cursorDir);
+          const outputDir = join(cursorParentDir, 'c2c-rules');
+          
+          await fileConverter.convertParsedFilesWithSeparateDirectories(parsedRules, rootPath, cursorDir);
+          await rootFileGenerator.generateRootFileForDirectory(parsedRules, cursorDir, outputDir);
+          await claudeMdService.updateClaudeMdFile(cursorParentDir);
+        }
+      }
+      
+      console.log('\nConversion completed successfully!');
+    } catch (error) {
+      console.error('Error:', error);
+      process.exit(1);
+    }
+  });
+
+program.parse();
+</file>
+
+<file path="README.md">
+# C2C - Cursor to Claude Code
+
+Convert Cursor IDE rules (`.mdc` files) to Claude AI markdown format with intelligent metadata parsing and categorization.
+
+## Demo
+
+> **Note**: If the video doesn't play, download `assets/demo.mp4` to view the demonstration.
+
+https://github.com/user-attachments/assets/407cd34e-c4c0-4a1b-981d-817b85decf20
+
+## Installation
+
+```bash
+npx @vooster/c2c
+```
+
+## Features
+
+- 🔍 **Automatic Discovery**: Recursively finds all `.cursor` directories in your project
+- 📝 **Metadata Parsing**: Extracts YAML frontmatter (alwaysApply, description, globs) from `.mdc` files
+- 🗂️ **Smart Categorization**: Organizes rules by priority (always apply → description → globs)
+- 📁 **Separate Directories**: Creates `c2c-rules` directories next to each `.cursor` directory
+- 🔗 **Auto-linking**: Generates `_root.md` index files with proper relative paths
+- 📄 **CLAUDE.md Integration**: Automatically updates or creates CLAUDE.md with `<c2c-rules>` sections
+
+## Usage
+
+Run the command in any directory containing `.cursor` folders:
+
+```bash
+npx @vooster/c2c
+```
+
+The tool will:
+
+1. Recursively find all `.cursor` directories in your project tree
+2. Locate all `*.mdc` files within them (including nested subdirectories)
+3. Parse YAML metadata from each file's frontmatter
+4. Create `c2c-rules` directories next to each `.cursor` directory
+5. Convert files to markdown format (stripping metadata)
+6. Generate `_root.md` index files with categorized references
+7. Update or create `CLAUDE.md` files with proper rule references
+
+### Result Screenshots
+
+**Found Files:**
+![Found Files](./assets/res-1-files.png)
+
+**Generated Content:**
+![Generated Content](./assets/res-2-content.png)
+
+## Example
+
+Given this structure with metadata:
+
+```
+project/
+├── .cursor/
+│   └── global.mdc (with alwaysApply: true)
+├── frontend/
+│   └── .cursor/
+│       ├── rules.mdc (with description: "React component guidelines")
+│       └── components/
+│           └── ui-rules.mdc (with globs: "**/*.tsx")
+└── backend/
+    └── .cursor/
+        └── api/
+            └── guidelines.mdc (with globs: "**/api/**")
+```
+
+Running `npx @vooster/c2c` will create:
+
+```
+project/
+├── CLAUDE.md (updated with <c2c-rules> section)
+├── c2c-rules/
+│   ├── _root.md
+│   └── global.md
+├── frontend/
+│   ├── CLAUDE.md (updated with <c2c-rules> section)
+│   └── c2c-rules/
+│       ├── _root.md
+│       ├── rules.md
+│       └── components/
+│           └── ui-rules.md
+└── backend/
+    ├── CLAUDE.md (updated with <c2c-rules> section)
+    └── c2c-rules/
+        ├── _root.md
+        └── api/
+            └── guidelines.md
+```
+
+Each `_root.md` will contain categorized rules, for example in `frontend/c2c-rules/_root.md`:
+
+```markdown
+# Rules Collection
+
+read below rules if description matches with your requirement:
+
+- rules
+  - description: React component guidelines
+  - path: rules.md
+
+read below rules if glob pattern matches with requirement related files:
+
+- ui-rules
+  - glob: \*_/_.tsx
+  - path: components/ui-rules.md
+```
+
+Each `CLAUDE.md` will be updated with:
+
+```markdown
+<c2c-rules>
+- @c2c-rules/_root.md
+</c2c-rules>
+```
+
+## Metadata Format
+
+`.mdc` files can include YAML frontmatter:
+
+```yaml
+---
+alwaysApply: true # Rule always applies (highest priority)
+description: string # Rule description for matching (medium priority)
+globs: string # Glob pattern for file matching (lowest priority)
+---
+Your actual rule content goes here...
+```
+
+## Development
+
+```bash
+# Install dependencies
+pnpm install
+
+# Build the project
+pnpm build
+
+# Run in development mode
+pnpm dev
+
+# Run tests
+pnpm test
+
+# Run tests in watch mode
+pnpm test:watch
+
+# Run tests with coverage
+pnpm test:coverage
+
+# Publish to npm
+pnpm publish:npm
+```
+
+## Architecture
+
+This tool uses a layered architecture:
+
+- **Presentation Layer**: CLI interface using Commander.js
+- **Application Layer**: Core business logic services
+  - `FileExplorerService`: Finds `.cursor` directories and `.mdc` files
+  - `MetadataParserService`: Extracts YAML frontmatter
+  - `FileConverterService`: Converts files and manages output directories
+  - `AdvancedRootFileGeneratorService`: Generates categorized index files
+  - `ClaudeMdService`: Updates CLAUDE.md files
+- **Domain Layer**: Type definitions for `FileInfo` and `CursorRuleMetadata`
+- **Infrastructure Layer**: File system operations
+
+## License
+
+MIT
+</file>
+
+<file path="src/__tests__/application/services/AdvancedRootFileGeneratorService.test.ts">
+import { AdvancedRootFileGeneratorService } from "../../../application/services/AdvancedRootFileGeneratorService.js";
+import { ParsedCursorRule } from "../../../domain/models/CursorRuleMetadata.js";
+import { promises as fs } from "fs";
+import path from "path";
+import { tmpdir } from "os";
+
+describe("AdvancedRootFileGeneratorService", () => {
+  let testDir: string;
+  let service: AdvancedRootFileGeneratorService;
+
+  beforeEach(async () => {
+    testDir = path.join(tmpdir(), `c2c-test-${Date.now()}-${Math.random().toString(36).slice(2, 11)}`);
+    await fs.mkdir(testDir, { recursive: true });
+    service = new AdvancedRootFileGeneratorService();
+  });
+
+  afterEach(async () => {
+    await fs.rm(testDir, { recursive: true, force: true });
+  });
+
+  describe("generateRootFile", () => {
+    it("should generate root file with alwaysApply rules", async () => {
+      // Arrange
+      const rules: ParsedCursorRule[] = [
+        {
+          metadata: { alwaysApply: true },
+          content: "Global rule content",
+          fileName: "global-rule",
+          relativePath: "project/.cursor/global-rule.mdc",
+        },
+        {
+          metadata: { alwaysApply: true },
+          content: "Another global rule",
+          fileName: "another-global",
+          relativePath: ".cursor/another-global.mdc",
+        },
+      ];
+
+      // Act
+      await service.generateRootFile(rules, testDir);
+
+      // Assert
+      const rootPath = path.join(testDir, "c2c-rules", "_root.md");
+      const content = await fs.readFile(rootPath, "utf-8");
+
+      expect(content).toContain("@project/global-rule.md");
+      expect(content).toContain("@another-global.md");
+    });
+
+    it("should generate root file with description rules", async () => {
+      // Arrange
+      const rules: ParsedCursorRule[] = [
+        {
+          metadata: { description: "React component rules" },
+          content: "React rules content",
+          fileName: "react-rules",
+          relativePath: "frontend/.cursor/react-rules.mdc",
+        },
+        {
+          metadata: { description: "API endpoint guidelines" },
+          content: "API rules",
+          fileName: "api-guide",
+          relativePath: "backend/.cursor/api/api-guide.mdc",
+        },
+      ];
+
+      // Act
+      await service.generateRootFile(rules, testDir);
+
+      // Assert
+      const rootPath = path.join(testDir, "c2c-rules", "_root.md");
+      const content = await fs.readFile(rootPath, "utf-8");
+
+      expect(content).toContain("frontend/react-rules.md");
+      expect(content).toContain("backend/api/api-guide.md");
+    });
+
+    it("should generate root file with glob rules", async () => {
+      // Arrange
+      const rules: ParsedCursorRule[] = [
+        {
+          metadata: { globs: "**/*.vue" },
+          content: "Vue rules",
+          fileName: "vue-rules",
+          relativePath: ".cursor/vue-rules.mdc",
+        },
+        {
+          metadata: { globs: "src/**/*.test.ts" },
+          content: "Test rules",
+          fileName: "test-rules",
+          relativePath: "project/.cursor/test-rules.mdc",
+        },
+      ];
+
+      // Act
+      await service.generateRootFile(rules, testDir);
+
+      // Assert
+      const rootPath = path.join(testDir, "c2c-rules", "_root.md");
+      const content = await fs.readFile(rootPath, "utf-8");
+
+      expect(content).toContain("vue-rules.md");
+      expect(content).toContain("project/test-rules.md");
+    });
+
+    it("should handle mixed rule types with correct priority", async () => {
+      // Arrange
+      const rules: ParsedCursorRule[] = [
+        {
+          metadata: {
+            alwaysApply: true,
+            description: "Should use alwaysApply",
+            globs: "**/*.js",
+          },
+          content: "Priority test",
+          fileName: "priority-rule",
+          relativePath: ".cursor/priority-rule.mdc",
+        },
+        {
+          metadata: {
+            description: "Should use description",
+            globs: "**/*.css",
+          },
+          content: "Description priority",
+          fileName: "desc-rule",
+          relativePath: ".cursor/desc-rule.mdc",
+        },
+        {
+          metadata: { globs: "**/*.md" },
+          content: "Glob only",
+          fileName: "glob-rule",
+          relativePath: ".cursor/glob-rule.mdc",
+        },
+      ];
+
+      // Act
+      await service.generateRootFile(rules, testDir);
+
+      // Assert
+      const rootPath = path.join(testDir, "c2c-rules", "_root.md");
+      const content = await fs.readFile(rootPath, "utf-8");
+
+      // Check priority-rule appears in alwaysApply section
+      const priorityRuleIndex = content.indexOf("priority-rule");
+      const descRuleIndex = content.indexOf("desc-rule");
+      const globRuleIndex = content.indexOf("glob-rule");
+
+      expect(priorityRuleIndex).toBeLessThan(descRuleIndex);
+      expect(descRuleIndex).toBeLessThan(globRuleIndex);
+    });
+
+    it("should handle rules without metadata", async () => {
+      // Arrange
+      const rules: ParsedCursorRule[] = [
+        {
+          metadata: {},
+          content: "Plain content",
+          fileName: "plain-rule",
+          relativePath: ".cursor/plain-rule.mdc",
+        },
+      ];
+
+      // Act
+      await service.generateRootFile(rules, testDir);
+
+      // Assert
+      const rootPath = path.join(testDir, "c2c-rules", "_root.md");
+      const content = await fs.readFile(rootPath, "utf-8");
+
+      // Should not appear in any categorized section
+      expect(content).not.toContain("plain-rule");
+    });
+
+    it("should handle empty rules array", async () => {
+      // Arrange
+      const rules: ParsedCursorRule[] = [];
+
+      // Act
+      await service.generateRootFile(rules, testDir);
+
+      // Assert
+      const rootPath = path.join(testDir, "c2c-rules", "_root.md");
+      const content = await fs.readFile(rootPath, "utf-8");
+
+      expect(content).toContain("# Rules Collection");
+      expect(content).not.toContain("always apply below rules");
+      expect(content).not.toContain("apply below rules if requirement matches");
+      expect(content).not.toContain(
+        "apply below rules if glob pattern matches"
+      );
+    });
+  });
+
+  describe("generateRootFileForDirectory", () => {
+    it("should generate root file for a specific cursor directory", async () => {
+      // Arrange
+      const rules: ParsedCursorRule[] = [
+        {
+          metadata: { alwaysApply: true },
+          content: "Project specific rule",
+          fileName: "project-rule",
+          relativePath: "project/.cursor/project-rule.mdc",
+        },
+      ];
+      const cursorDir = path.join(testDir, "project", ".cursor");
+      const outputDir = path.join(testDir, "project", "c2c-rules");
+
+      // Act
+      await service.generateRootFileForDirectory(rules, cursorDir, outputDir);
+
+      // Assert
+      const rootPath = path.join(outputDir, "_root.md");
+      const content = await fs.readFile(rootPath, "utf-8");
+
+      expect(content).toContain("@project-rule.md");
+      expect(content).toContain("# Rules Collection");
+    });
+
+    it("should generate root file for root cursor directory", async () => {
+      // Arrange
+      const rules: ParsedCursorRule[] = [
+        {
+          metadata: { description: "Global rule for all projects" },
+          content: "Global rule content",
+          fileName: "global-rule",
+          relativePath: ".cursor/global-rule.mdc",
+        },
+      ];
+      const cursorDir = path.join(testDir, ".cursor");
+      const outputDir = path.join(testDir, "c2c-rules");
+
+      // Act
+      await service.generateRootFileForDirectory(rules, cursorDir, outputDir);
+
+      // Assert
+      const rootPath = path.join(outputDir, "_root.md");
+      const content = await fs.readFile(rootPath, "utf-8");
+
+      expect(content).toContain("global-rule.md");
+      expect(content).toContain("Global rule for all projects");
+    });
+
+    it("should generate root file with proper relative paths for nested directories", async () => {
+      // Arrange
+      const rules: ParsedCursorRule[] = [
+        {
+          metadata: { globs: "**/*.tsx" },
+          content: "React component rules",
+          fileName: "react-rules",
+          relativePath: "frontend/components/.cursor/sub/react-rules.mdc",
+        },
+      ];
+      const cursorDir = path.join(testDir, "frontend", "components", ".cursor");
+      const outputDir = path.join(testDir, "frontend", "components", "c2c-rules");
+
+      // Act
+      await service.generateRootFileForDirectory(rules, cursorDir, outputDir);
+
+      // Assert
+      const rootPath = path.join(outputDir, "_root.md");
+      const content = await fs.readFile(rootPath, "utf-8");
+
+      expect(content).toContain("sub/react-rules.md");
+      expect(content).toContain("**/*.tsx");
+    });
+  });
+});
+</file>
+
+<file path="package.json">
+{
+  "name": "@vooster/c2c",
+  "version": "1.0.3",
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "Convert Cursor IDE rules to Claude AI markdown format",
+  "main": "dist/index.js",
+  "bin": {
+    "c2c": "./dist/presentation/cli.js"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/presentation/cli.ts",
+    "start": "node dist/presentation/cli.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "prepublish:npm": "pnpm build && pnpm test",
+    "publish:npm": "pnpm npm publish --access public"
+  },
+  "keywords": [
+    "cursor",
+    "claude",
+    "ai",
+    "markdown",
+    "converter"
+  ],
+  "author": "Vooster",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.0.14",
+    "commander": "^14.0.0",
+    "jest": "^30.0.4",
+    "ts-jest": "^29.4.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "js-yaml": "^4.1.0"
+  }
+}
+</file>
+
+</files>
